@@ -16,7 +16,7 @@ $--color-transition-base: color .2s cubic-bezier(.645,.045,.355,1) !default;
 /* Color
 -------------------------- */
 /// color|1|Brand Color|0
-$--color-primary: #409EFF !default;
+$--color-primary: #1051B5 !default;
 /// color|1|Background Color|4
 $--color-white: #FFFFFF !default;
 /// color|1|Background Color|4
@@ -30,6 +30,7 @@ $--color-primary-light-6: mix($--color-white, $--color-primary, 60%) !default; /
 $--color-primary-light-7: mix($--color-white, $--color-primary, 70%) !default; /* c6e2ff */
 $--color-primary-light-8: mix($--color-white, $--color-primary, 80%) !default; /* d9ecff */
 $--color-primary-light-9: mix($--color-white, $--color-primary, 90%) !default; /* ecf5ff */
+$--color-primary-light-10: mix($--color-white, $--color-primary, 15%) !default; /* ecf5ff */
 /// color|1|Functional Color|1
 $--color-success: #67C23A !default;
 /// color|1|Functional Color|1
@@ -51,13 +52,13 @@ $--color-info-lighter: mix($--color-white, $--color-info, 90%) !default;
 /// color|1|Font Color|2
 $--color-text-primary: #303133 !default;
 /// color|1|Font Color|2
-$--color-text-regular: #606266 !default;
+$--color-text-regular: #595959 !default;
 /// color|1|Font Color|2
 $--color-text-secondary: #909399 !default;
 /// color|1|Font Color|2
 $--color-text-placeholder: #C0C4CC !default;
 /// color|1|Border Color|3
-$--border-color-base: #DCDFE6 !default;
+$--border-color-base: #D9D9D9  !default;
 /// color|1|Border Color|3
 $--border-color-light: #E4E7ED !default;
 /// color|1|Border Color|3
@@ -551,9 +552,9 @@ $--button-default-background-color: $--color-white !default;
 $--button-default-border-color: $--border-color-base !default;
 
 /// color||Color|0
-$--button-disabled-font-color: $--color-text-placeholder !default;
+$--button-disabled-font-color: $--border-color-base !default;
 /// color||Color|0
-$--button-disabled-background-color: $--color-white !default;
+$--button-disabled-background-color: #F5F5F5 !default;
 /// color||Color|0
 $--button-disabled-border-color: $--border-color-lighter !default;
 
@@ -588,8 +589,8 @@ $--button-info-font-color: $--color-white !default;
 /// color||Color|0
 $--button-info-background-color: $--color-info !default;
 
-$--button-hover-tint-percent: 20% !default;
-$--button-active-shade-percent: 10% !default;
+$--button-hover-tint-percent: 15% !default;
+$--button-active-shade-percent: 15% !default;
 
 
 /* cascader

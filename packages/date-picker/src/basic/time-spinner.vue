@@ -101,9 +101,9 @@
 </template>
 
 <script type="text/babel">
-  import { getRangeHours, getRangeMinutes, modifyTime } from 'element-ui/src/utils/date-util';
-  import ElScrollbar from 'element-ui/packages/scrollbar';
-  import RepeatClick from 'element-ui/src/directives/repeat-click';
+  import { getRangeHours, getRangeMinutes, modifyTime } from 'xqh-element/src/utils/date-util';
+  import ElScrollbar from 'xqh-element/packages/scrollbar';
+  import RepeatClick from 'xqh-element/src/directives/repeat-click';
 
   export default {
     components: { ElScrollbar },

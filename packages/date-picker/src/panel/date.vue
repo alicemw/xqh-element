@@ -161,11 +161,11 @@
     extractDateFormat,
     extractTimeFormat,
     timeWithinRange
-  } from 'element-ui/src/utils/date-util';
-  import Clickoutside from 'element-ui/src/utils/clickoutside';
-  import Locale from 'element-ui/src/mixins/locale';
-  import ElInput from 'element-ui/packages/input';
-  import ElButton from 'element-ui/packages/button';
+  } from 'xqh-element/src/utils/date-util';
+  import Clickoutside from 'xqh-element/src/utils/clickoutside';
+  import Locale from 'xqh-element/src/mixins/locale';
+  import ElInput from 'xqh-element/packages/input';
+  import ElButton from 'xqh-element/packages/button';
   import TimePicker from './time';
   import YearTable from '../basic/year-table';
   import MonthTable from '../basic/month-table';

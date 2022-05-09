@@ -85,12 +85,12 @@
 
 <script>
 import Vue from 'vue';
-import Clickoutside from 'element-ui/src/utils/clickoutside';
-import { formatDate, parseDate, isDateObject, getWeekNumber } from 'element-ui/src/utils/date-util';
-import Popper from 'element-ui/src/utils/vue-popper';
-import Emitter from 'element-ui/src/mixins/emitter';
-import ElInput from 'element-ui/packages/input';
-import merge from 'element-ui/src/utils/merge';
+import Clickoutside from 'xqh-element/src/utils/clickoutside';
+import { formatDate, parseDate, isDateObject, getWeekNumber } from 'xqh-element/src/utils/date-util';
+import Popper from 'xqh-element/src/utils/vue-popper';
+import Emitter from 'xqh-element/src/mixins/emitter';
+import ElInput from 'xqh-element/packages/input';
+import merge from 'xqh-element/src/utils/merge';
 
 const NewPopper = {
   props: {
