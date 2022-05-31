@@ -21,6 +21,11 @@
     .el-input__inner {
       border-color: $--select-border-color-hover;
     }
+    .el-input {
+      & .el-select__caret {
+        color: $--color-primary-light-10;
+      }
+    }
   }
 
   .el-input__inner {

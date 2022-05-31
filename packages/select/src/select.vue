@@ -99,7 +99,7 @@
       </template>
       <template slot="suffix">
         <i v-show="!showClose" :class="['el-select__caret', 'el-input__icon', 'el-icon-' + iconClass]"></i>
-        <i v-if="showClose" class="el-select__caret el-input__icon el-icon-circle-close" @click="handleClearClick"></i>
+        <i v-if="showClose" class="el-select__caret el-input__icon el-icon-close" @click="handleClearClick"></i>
       </template>
     </el-input>
     <transition

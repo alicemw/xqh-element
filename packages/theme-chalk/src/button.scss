@@ -75,15 +75,16 @@
     &,
     &:hover,
     &:focus {
-      color: $--button-disabled-font-color;
+      color: $--button-disabled-font-color !important;
       cursor: not-allowed;
       background-image: none;
-      background-color: $--button-disabled-background-color;
-      border-color: $--button-disabled-border-color;
+      background-color: $--button-disabled-background-color !important;
+      border-color: $--button-disabled-border-color !important;
     }
 
     &.el-button--text {
-      background-color: transparent;
+      background-color: transparent !important;
+      border-color: transparent !important;
     }
 
     &.is-plain {

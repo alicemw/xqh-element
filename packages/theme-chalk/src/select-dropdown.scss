@@ -11,7 +11,7 @@
   box-shadow: $--select-dropdown-shadow;
   box-sizing: border-box;
   margin: 5px 0;
-
+  
   @include when(multiple) {
     & .el-select-dropdown__item {
       padding-right: 40px;
@@ -28,7 +28,7 @@
         position: absolute;
         right: 20px;
         font-family: 'element-icons';
-        content: "\e6da";
+        content: "";
         font-size: 12px;
         font-weight: bold;
         -webkit-font-smoothing: antialiased;
@@ -59,4 +59,5 @@
   padding: $--select-dropdown-padding;
   margin: 0;
   box-sizing: border-box;
+  max-height: 216px;
 }

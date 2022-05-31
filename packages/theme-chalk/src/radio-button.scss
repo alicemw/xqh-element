@@ -61,6 +61,9 @@
         background-color: $--radio-button-checked-background-color;
         border-color: $--radio-button-checked-border-color;
         box-shadow: -1px 0 0 0 $--radio-button-checked-border-color;
+        &:hover {
+          background-color: #EDF4FF;
+        }
       }
     }
 
