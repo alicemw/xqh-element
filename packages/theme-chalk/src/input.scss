@@ -135,6 +135,7 @@
     &:focus {
       outline: none;
       border-color: $--input-focus-border;
+      color: #262626;
     }
   }
 
@@ -192,9 +193,9 @@
 
   @include when(disabled) {
     .el-input__inner {
-      background-color: $--input-disabled-fill;
-      border-color: $--input-disabled-border;
-      color: $--input-disabled-color;
+      background-color: #F5F5F5;
+      border-color: #D9D9D9;
+      color: #BFBFBF;
       cursor: not-allowed;
 
       &::placeholder {

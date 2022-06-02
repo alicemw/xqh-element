@@ -127,6 +127,7 @@
   @include e(tags-text) {
     overflow: hidden;
     text-overflow: ellipsis;
+    color: #262626;
   }
 
   .el-tag {
@@ -139,9 +140,9 @@
     align-items: center;
 
     &__close.el-icon-close {
-      background-color: $--color-text-placeholder;
+      background-color: transparent !important;
       top: 0;
-      color: $--color-white;
+      color: #595959;
       flex-shrink: 0;
 
       &:hover {

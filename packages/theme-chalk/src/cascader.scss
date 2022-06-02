@@ -44,7 +44,7 @@
 
     @include when(focus) {
       .el-input__inner {
-        border-color: $--input-focus-border;
+        border-color: $--color-primary;
       }
     }
   }
