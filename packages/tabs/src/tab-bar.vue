@@ -1,5 +1,6 @@
 <template>
-  <div class="el-tabs__active-bar" :class="`is-${ rootTabs.tabPosition }`" :style="barStyle"></div>
+  <div class="el-tabs__active-bar" :class="`is-${ rootTabs.tabPosition }`" :style="barStyle">
+  </div>
 </template>
 <script>
   import { arrayFind } from 'xqh-element/src/utils/util';
@@ -17,7 +18,7 @@
         get() {
           let style = {};
           let offset = 0;
-          let tabSize = 0;
+          let marginLeft = '0px';
           const sizeName = ['top', 'bottom'].indexOf(this.rootTabs.tabPosition) !== -1 ? 'width' : 'height';
           const sizeDir = sizeName === 'width' ? 'x' : 'y';
           const firstUpperCase = str => {
@@ -31,10 +32,11 @@
               offset += $el[`client${firstUpperCase(sizeName)}`];
               return true;
             } else {
-              tabSize = $el[`client${firstUpperCase(sizeName)}`];
+              let maxWid = $el[`client${firstUpperCase(sizeName)}`];
               const tabStyles = window.getComputedStyle($el);
               if (sizeName === 'width' && this.tabs.length > 1) {
-                tabSize -= parseFloat(tabStyles.paddingLeft) + parseFloat(tabStyles.paddingRight);
+                maxWid -= parseFloat(tabStyles.paddingLeft) + parseFloat(tabStyles.paddingRight);
+                marginLeft = ((maxWid / 2) - 12).toFixed(0) + 'px';
               }
               if (sizeName === 'width') {
                 offset += parseFloat(tabStyles.paddingLeft);
@@ -44,10 +46,11 @@
           });
 
           const transform = `translate${firstUpperCase(sizeDir)}(${offset}px)`;
-          style[sizeName] = tabSize + 'px';
+          style[sizeName] = '24' + 'px';
           style.transform = transform;
           style.msTransform = transform;
           style.webkitTransform = transform;
+          style.marginLeft = marginLeft;
 
           return style;
         }
