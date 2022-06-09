@@ -29,7 +29,7 @@
   }
 
   @include e(wrap) {
-    height: 204px;
+    height: 238px;
   }
 
   @include e(list) {
@@ -84,6 +84,7 @@
     cursor: pointer;
     &:hover, &:focus {
       background: #EDF4FF;
+      color: $--color-primary-light-10;
     }
   }
 
