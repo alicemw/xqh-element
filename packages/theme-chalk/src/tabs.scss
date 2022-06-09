@@ -179,6 +179,7 @@
       border-bottom: 1px solid transparent;
       border-left: 1px solid $--border-color-light;
       transition: color .3s cubic-bezier(.645,.045,.355,1), padding .3s cubic-bezier(.645,.045,.355,1);
+      padding: 0 16px;
       &:first-child {
         border-left: none;
       }
@@ -191,6 +192,9 @@
             width: 14px;
           }
         }
+      }
+      &:hover {
+        background: $--color-Lightblue;
       }
       &.is-active {
         border-bottom-color: $--color-white;
@@ -227,6 +231,8 @@
       border: 1px solid transparent;
       margin-top: -1px;
       color: $--color-text-secondary;
+      background: #F5F5F5;
+      padding: 0 16px;
 
       &:first-child {
         margin-left: -1px;
