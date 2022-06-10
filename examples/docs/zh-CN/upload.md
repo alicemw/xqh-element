@@ -16,7 +16,9 @@
   :limit="3"
   :on-exceed="handleExceed"
   :file-list="fileList">
-  <el-button size="small" type="primary">点击上传</el-button>
+  <el-button size="small" type="primary" icon="el-icon-upload3">
+    <span style="font-size: 14px;">点击上传</span>
+  </el-button>
   <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
 </el-upload>
 <script>
@@ -303,7 +305,7 @@
   drag
   action="https://jsonplaceholder.typicode.com/posts/"
   multiple>
-  <i class="el-icon-upload"></i>
+  <i class="el-icon-uploadlogo"></i>
   <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
   <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
 </el-upload>

@@ -982,6 +982,23 @@
   content: "\e77c";
 }
 
+.el-icon-upload3:before {
+  display: inline-block;
+  width: 17px;
+  height: 16px;
+  content: '';
+  background: url('~examples/assets/images/starUpload.png');
+  background-size: 100%;
+}
+.el-icon-uploadlogo {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  content: '';
+  background: url('~examples/assets/images/bigstarUpload.png');
+  background-size: 100%;
+  margin: 60px 0 16px;
+}
 .el-icon-upload2:before {
   content: "\e77b";
 }
