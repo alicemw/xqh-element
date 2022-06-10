@@ -168,14 +168,14 @@
     }
     @include when(indeterminate) {
       .el-checkbox__inner {
-        background-color: $--checkbox-checked-background-color;
+        background-color: #fff;
         border-color: $--checkbox-checked-input-border-color;
 
         &::before {
           content: '';
           position: absolute;
           display: block;
-          background-color: $--checkbox-checked-icon-color;
+          background-color: $--color-primary;
           height: 2px;
           transform: scale(0.5);
           left: 0;
@@ -204,6 +204,7 @@
 
     &:hover {
       border-color: $--checkbox-input-border-color-hover;
+      background-color: #EDF4FF;
     }
 
     &::after {

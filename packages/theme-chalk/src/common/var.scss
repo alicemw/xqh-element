@@ -251,7 +251,7 @@ $--radio-checked-input-background-color: $--color-white !default;
 /// color||Color|0
 $--radio-checked-icon-color: #FFF !default;
 
-$--radio-input-border-color-hover: $--color-primary !default;
+$--radio-input-border-color-hover: $--color-primary-light-10 !default;
 
 $--radio-bordered-height: 40px !default;
 $--radio-bordered-padding: 12px 20px 0 10px !default;
@@ -426,7 +426,7 @@ $--notification-danger-icon-color: $--color-danger !default;
 -------------------------- */
 $--input-font-size: $--font-size-base !default;
 /// color||Color|0
-$--input-font-color: $--color-text-regular !default;
+$--input-font-color: #262626 !default;
 /// height||Other|4
 $--input-width: 140px !default;
 /// height||Other|4
