@@ -52,7 +52,7 @@
   }
 
   @include e(content) {
-    font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+    font-family: $--family;
     font-weight: 400;
     padding-bottom: 25px;
     font-size: 14px;

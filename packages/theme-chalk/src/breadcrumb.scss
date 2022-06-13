@@ -22,8 +22,9 @@
     float: left;
 
     @include e(inner) {
-      color: $--color-text-regular;
-
+      // color: $--color-text-regular;
+      font-family: $--family;
+      font-weight: 400;
       &.is-link, & a {
         font-weight: bold;
         text-decoration: none;
@@ -36,13 +37,37 @@
         }
       }
     }
+    &:hover {
+      color: $--color-textStar;
+    }
 
+    &:first-child {
+      .el-breadcrumb__inner,
+      .el-breadcrumb__inner a {
+        & {
+          font-family: $--family;
+          font-size: $--font-size-base;
+          color: $--color-text-regular;
+          font-weight: bold;
+          -webkit-background-clip: text;
+
+        }
+      }
+    }
+    &:first-child {
+      .el-breadcrumb__inner,
+      .el-breadcrumb__inner a {
+        &:hover {
+          color: $--color-primary;
+        }
+      }
+    }
     &:last-child {
       .el-breadcrumb__inner,
       .el-breadcrumb__inner a {
         &, &:hover {
           font-weight: normal;
-          color: $--color-text-regular;
+          color: $--color-primary;
           cursor: text;
         }
       }
