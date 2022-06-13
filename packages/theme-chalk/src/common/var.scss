@@ -20,6 +20,7 @@ $--color-primary: #1051B5 !default;
 /// color|1|Background Color|4
 $--color-white: #FFFFFF !default;
 $--color-Lightblue: #EDF4FF !default;
+$--color-textStar: #346BC0 !default;
 /// color|1|Background Color|4
 $--color-black: #000000 !default;
 $--color-primary-light-1: mix($--color-white, $--color-primary, 10%) !default; /* 53a8ff */
@@ -637,7 +638,7 @@ $--table-font-color: $--color-text-regular !default;
 /// color||Color|0
 $--table-header-font-color: $--color-text-secondary !default;
 /// color||Color|0
-$--table-row-hover-background-color: $--background-color-base !default;
+$--table-row-hover-background-color: $--color-Lightblue !default;
 $--table-current-row-background-color: $--color-primary-light-9 !default;
 /// color||Color|0
 $--table-header-background-color: $--color-white !default;
