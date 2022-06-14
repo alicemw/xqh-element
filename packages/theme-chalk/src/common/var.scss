@@ -68,6 +68,7 @@ $--border-color-lighter: #EBEEF5 !default;
 /// color|1|Border Color|3
 $--border-color-extra-light: #F2F6FC !default;
 
+$--picker-background-color-base: #DCEAF5;
 // Background
 /// color|1|Background Color|4
 $--background-color-base: #F5F7FA !default;
@@ -816,7 +817,7 @@ $--datepicker-icon-color: $--color-text-primary !default;
 $--datepicker-border-color: $--disabled-border-base !default;
 $--datepicker-inner-border-color: #e4e4e4 !default;
 /// color||Color|0
-$--datepicker-inrange-background-color: $--border-color-extra-light !default;
+$--datepicker-inrange-background-color: #DCEAF5 !default;
 /// color||Color|0
 $--datepicker-inrange-hover-background-color: $--border-color-extra-light !default;
 /// color||Color|0

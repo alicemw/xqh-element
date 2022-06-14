@@ -83,7 +83,7 @@
     }
 
     &.in-range div > span {
-      background-color: #DCEAF5;
+      background-color: $--datepicker-inrange-background-color;
     }
 
     &.current:not(.disabled) span {
