@@ -75,7 +75,7 @@
 :::demo
 ```html
 <div class="container">
-  <div class="block">
+  <!-- <div class="block">
     <span class="demonstration">周</span>
     <el-date-picker
       v-model="value1"
@@ -83,7 +83,7 @@
       format="yyyy 第 WW 周"
       placeholder="选择周">
     </el-date-picker>
-  </div>
+  </div> -->
   <div class="block">
     <span class="demonstration">月</span>
     <el-date-picker
@@ -102,14 +102,14 @@
       placeholder="选择年">
     </el-date-picker>
   </div>
-  <div class="block">
+  <!-- <div class="block">
     <span class="demonstration">多个日期</span>
     <el-date-picker
       type="dates"
       v-model="value4"
       placeholder="选择一个或多个日期">
     </el-date-picker>
-  </div>
+  </div> -->
 </div>
 
 <script>

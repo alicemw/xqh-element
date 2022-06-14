@@ -104,13 +104,21 @@
     }
 
     @include when(dark) {
-      background: $--tooltip-fill;
-      color: $--tooltip-color;
+      font-size: 12px;
+      font-family: $--family;
+      font-weight: 400;
+      line-height: 24px;
+      background: $--color-text-regular;
+      color: #FFFFFF;
     }
 
     @include when(light) {
-      background: $--tooltip-color;
-      border: 1px solid $--tooltip-fill;
+      font-size: 12px;
+      font-family: $--family;
+      font-weight: 400;
+      line-height: 24px;
+      background: #EBEBEB;      
+      color: $--color-text-regular;
 
       &[x-placement^="top"] .popper__arrow {
         border-top-color: $--tooltip-fill;
