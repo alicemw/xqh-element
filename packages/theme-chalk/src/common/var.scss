@@ -34,23 +34,23 @@ $--color-primary-light-8: mix($--color-white, $--color-primary, 80%) !default; /
 $--color-primary-light-9: mix($--color-white, $--color-primary, 90%) !default; /* ecf5ff */
 $--color-primary-light-10: mix($--color-white, $--color-primary, 15%) !default; /* ecf5ff */
 /// color|1|Functional Color|1
-$--color-success: #67C23A !default;
+$--color-success: #15C993 !default;
 /// color|1|Functional Color|1
-$--color-warning: #E6A23C !default;
+$--color-warning: #E5AA07 !default;
 /// color|1|Functional Color|1
-$--color-danger: #F56C6C !default;
+$--color-danger: #F7484A !default;
 /// color|1|Functional Color|1
-$--color-info: #909399 !default;
+$--color-info: #5495D7 !default;
 
 $--color-success-light: mix($--color-white, $--color-success, 80%) !default;
 $--color-warning-light: mix($--color-white, $--color-warning, 80%) !default;
 $--color-danger-light: mix($--color-white, $--color-danger, 80%) !default;
 $--color-info-light: mix($--color-white, $--color-info, 80%) !default;
 
-$--color-success-lighter: mix($--color-white, $--color-success, 90%) !default;
-$--color-warning-lighter: mix($--color-white, $--color-warning, 90%) !default;
-$--color-danger-lighter: mix($--color-white, $--color-danger, 90%) !default;
-$--color-info-lighter: mix($--color-white, $--color-info, 90%) !default;
+$--color-success-lighter: #E6FFF5 !default;
+$--color-warning-lighter: #FFFDF0 !default;
+$--color-danger-lighter: #FFF2F0 !default;
+$--color-info-lighter: #EBF6FF !default;
 /// color|1|Font Color|2
 $--color-text-primary: #303133 !default;
 /// color|1|Font Color|2
@@ -744,14 +744,14 @@ $--dropdown-menuItem-hover-color: $--link-color !default;
 /* Badge
 -------------------------- */
 /// color||Color|0
-$--badge-background-color: $--color-danger !default;
-$--badge-radius: 10px !default;
+$--badge-background-color: #F14B4B !default;
+$--badge-radius: 12px 12px 12px 12px !default;
 /// fontSize||Font|1
 $--badge-font-size: 12px !default;
 /// padding||Spacing|3
 $--badge-padding: 6px !default;
 /// height||Other|4
-$--badge-size: 18px !default;
+$--badge-size: 20px !default;
 
 /* Card
 --------------------------*/
