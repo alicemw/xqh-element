@@ -28,11 +28,16 @@
           <i class="el-icon-document"></i>{{file.name}}
         </a>
         <label class="el-upload-list__item-status-label">
-          <i :class="{
+          <!-- <i :class="{
             'el-icon-upload-success': true,
             'el-icon-circle-check': listType === 'text',
             'el-icon-check': ['picture-card', 'picture'].indexOf(listType) > -1
-          }"></i>
+          }"></i> -->
+          <img :class="{
+            'el-icon-upload-success': true,
+            'el-icon-circle-check': listType === 'text',
+            'el-icon-check': ['picture-card', 'picture'].indexOf(listType) > -1
+          }" src="~examples/assets/images/Frame.png" alt="">
         </label>
         <i class="el-icon-close" v-if="!disabled" @click="$emit('remove', file)"></i>
         <i class="el-icon-close-tip" v-if="!disabled">{{ t('el.upload.deleteTip') }}</i> <!--因为close按钮只在li:focus的时候 display, li blur后就不存在了，所以键盘导航时永远无法 focus到 close按钮上-->

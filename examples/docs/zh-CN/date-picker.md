@@ -15,19 +15,19 @@
     <el-date-picker
       v-model="value1"
       type="date"
-      placeholder="选择日期">
+      placeholder="请选择日期">
     </el-date-picker>
   </div>
-  <div class="block">
+  <!-- <div class="block">
     <span class="demonstration">带快捷选项</span>
     <el-date-picker
       v-model="value2"
       align="right"
       type="date"
-      placeholder="选择日期"
+      placeholder="请选择日期"
       :picker-options="pickerOptions">
     </el-date-picker>
-  </div>
+  </div> -->
 </template>
 
 <script>
@@ -75,7 +75,7 @@
 :::demo
 ```html
 <div class="container">
-  <div class="block">
+  <!-- <div class="block">
     <span class="demonstration">周</span>
     <el-date-picker
       v-model="value1"
@@ -83,7 +83,7 @@
       format="yyyy 第 WW 周"
       placeholder="选择周">
     </el-date-picker>
-  </div>
+  </div> -->
   <div class="block">
     <span class="demonstration">月</span>
     <el-date-picker
@@ -102,14 +102,14 @@
       placeholder="选择年">
     </el-date-picker>
   </div>
-  <div class="block">
+  <!-- <div class="block">
     <span class="demonstration">多个日期</span>
     <el-date-picker
       type="dates"
       v-model="value4"
       placeholder="选择一个或多个日期">
     </el-date-picker>
-  </div>
+  </div> -->
 </div>
 
 <script>
@@ -127,11 +127,11 @@
 ```
 :::
 
-### 选择日期范围
+### 请选择日期范围
 
 可在一个选择器中便捷地选择一个时间范围
 
-:::demo 在选择日期范围时，默认情况下左右面板会联动。如果希望两个面板各自独立切换当前月份，可以使用`unlink-panels`属性解除联动。
+:::demo 在请选择日期范围时，默认情况下左右面板会联动。如果希望两个面板各自独立切换当前月份，可以使用`unlink-panels`属性解除联动。
 ```html
 <template>
   <div class="block">
@@ -310,7 +310,7 @@
     <el-date-picker
       v-model="value1"
       type="date"
-      placeholder="选择日期"
+      placeholder="请选择日期"
       format="yyyy 年 MM 月 dd 日">
     </el-date-picker>
   </div>
@@ -320,7 +320,7 @@
     <el-date-picker
       v-model="value2"
       type="date"
-      placeholder="选择日期"
+      placeholder="请选择日期"
       format="yyyy 年 MM 月 dd 日"
       value-format="yyyy-MM-dd">
     </el-date-picker>
@@ -331,7 +331,7 @@
     <el-date-picker
       v-model="value3"
       type="date"
-      placeholder="选择日期"
+      placeholder="请选择日期"
       format="yyyy 年 MM 月 dd 日"
       value-format="timestamp">
     </el-date-picker>
@@ -354,9 +354,9 @@
 
 ###  默认显示日期
 
-在选择日期范围时，指定起始日期和结束日期的默认时刻。
+在请选择日期范围时，指定起始日期和结束日期的默认时刻。
 
-:::demo 选择日期范围时，默认情况下，起始日期和结束日期的时间部分均为当天的 0 点 0 分 0 秒。通过`default-time`可以分别指定二者的具体时刻。`default-time`接受一个数组，其中的值为形如`12:00:00`的字符串，第一个值控制起始日期的时刻，第二个值控制结束日期的时刻。
+:::demo 请选择日期范围时，默认情况下，起始日期和结束日期的时间部分均为当天的 0 点 0 分 0 秒。通过`default-time`可以分别指定二者的具体时刻。`default-time`接受一个数组，其中的值为形如`12:00:00`的字符串，第一个值控制起始日期的时刻，第二个值控制结束日期的时刻。
 ```html
 <template>
   <div class="block">

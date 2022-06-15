@@ -18,10 +18,11 @@
     align-items: center;
     height: $--collapse-header-height;
     line-height: $--collapse-header-height;
+    font-family: Microsoft YaHei-Bold, Microsoft YaHei;
     background-color: $--collapse-header-background-color;
     color: $--collapse-header-font-color;
     cursor: pointer;
-    border-bottom: 1px solid $--collapse-border-color;
+    // border-bottom: 1px solid $--collapse-border-color;
     font-size: $--collapse-header-font-size;
     font-weight: 500;
     transition: border-bottom-color .3s;
@@ -47,15 +48,18 @@
     background-color: $--collapse-content-background-color;
     overflow: hidden;
     box-sizing: border-box;
-    border-bottom: 1px solid $--collapse-border-color;
+    // border-bottom: 1px solid $--collapse-border-color;
   }
 
   @include e(content) {
+    font-family: $--family;
+    font-weight: 400;
     padding-bottom: 25px;
-    font-size: $--collapse-content-font-size;
-    color: $--collapse-content-font-color;
-    line-height: 1.769230769230769;
+    font-size: 14px;
+    color: #8C8C8C;
+    line-height: 20px;
   }
+
 
   &:last-child {
     margin-bottom: -1px;

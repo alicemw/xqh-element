@@ -535,6 +535,7 @@
       },
 
       handleRangePick(val, close = true) {
+        // 日期范围选择器的选中方法
         const defaultTime = this.defaultTime || [];
         const minDate = modifyWithTimeString(val.minDate, defaultTime[0]);
         const maxDate = modifyWithTimeString(val.maxDate, defaultTime[1]);
@@ -552,7 +553,10 @@
           this.minDate = minDate;
         }, 10);
         if (!close || this.showTime) return;
-        this.handleConfirm();
+        let timer = setTimeout(() => {
+          clearTimeout(timer);
+          this.handleConfirm();
+        }, 500);
       },
 
       handleShortcutClick(shortcut) {

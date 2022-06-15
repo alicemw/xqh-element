@@ -4,7 +4,6 @@
     cellpadding="0"
     class="el-date-table"
     @click="handleClick"
-    @mousemove="handleMouseMove"
     :class="{ 'is-week-mode': selectionMode === 'week' }">
     <tbody>
     <tr>

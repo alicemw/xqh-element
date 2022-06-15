@@ -161,7 +161,7 @@
               ret = '#e6a23c';
               break;
             default:
-              ret = '#20a0ff';
+              ret = '#1051B5';
           }
         }
         return ret;

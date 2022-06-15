@@ -63,8 +63,8 @@
   border: 1px dashed #d9d9d9;
   border-radius: 6px;
   box-sizing: border-box;
-  width: 360px;
-  height: 180px;
+  width: 626px;
+  height: 240px;
   text-align: center;
   cursor: pointer;
   position: relative;
@@ -146,14 +146,17 @@
     }
 
     & .el-icon-upload-success {
-      color: $--color-success;
+      vertical-align: middle;
+      width: 17px;
+      height: 17px;
+      margin: auto;
     }
 
     .el-icon-close {
       display: none;
       position: absolute;
-      top: 5px;
-      right: 5px;
+      top: 8px;
+      right: 7px;
       cursor: pointer;
       opacity: .75;
       color: $--color-text-regular;

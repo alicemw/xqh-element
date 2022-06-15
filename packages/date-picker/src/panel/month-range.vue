@@ -225,7 +225,10 @@
           this.minDate = minDate;
         }, 10);
         if (!close) return;
-        this.handleConfirm();
+        let timer = setTimeout(() => {
+          clearTimeout(timer);
+          this.handleConfirm();
+        }, 500);
       },
 
       handleShortcutClick(shortcut) {

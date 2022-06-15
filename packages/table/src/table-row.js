@@ -69,7 +69,7 @@ export default {
                   data.treeNode.noLazyChildren = treeRowData.noLazyChildren;
                 }
               }
-            }
+            };
             return (
               <td
                 style={this.getCellStyle($index, cellIndex, row, column)}

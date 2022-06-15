@@ -118,7 +118,7 @@
   }
 
   .el-table__cell {
-    padding: 12px 0;
+    padding: 4px 0;
     min-width: 0;
     box-sizing: border-box;
     text-overflow: ellipsis;
@@ -540,6 +540,7 @@
   @include m(enable-row-hover) {
     .el-table__body tr:hover > td.el-table__cell {
       background-color: $--table-row-hover-background-color;
+      color: $--color-textStar;
     }
   }
 

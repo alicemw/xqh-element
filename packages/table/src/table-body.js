@@ -194,7 +194,7 @@ export default {
     },
 
     getCellStyle(rowIndex, columnIndex, row, column) {
-      const cellStyle = this.table.cellStyle;
+      const cellStyle = this.table.cellStyle || {};
       if (typeof cellStyle === 'function') {
         return cellStyle.call(null, {
           rowIndex,
@@ -202,7 +202,10 @@ export default {
           row,
           column
         });
-      }
+      };
+      if (!cellStyle || !cellStyle.height) {
+        cellStyle.height = '48px';
+      };
       return cellStyle;
     },
 

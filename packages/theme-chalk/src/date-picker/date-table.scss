@@ -48,15 +48,21 @@
     }
 
     & span {
-      width: 24px;
-      height: 24px;
+      width: 30px;
+      height: 30px;
       display: block;
       margin: 0 auto;
-      line-height: 24px;
+      line-height: 30px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      border-radius: 50%;
+      border-radius: 2px 2px 2px 2px;
+      // border-radius: 50%;
+    }
+
+    & span:hover {
+      color: $--color-primary;
+      border: 1px solid $--color-primary;
     }
 
     &.next-month,
@@ -76,23 +82,17 @@
       }
     }
 
-    &.available:hover {
-      color: $--datepicker-hover-font-color;
-    }
-
-    &.in-range div {
+    &.in-range div > span {
       background-color: $--datepicker-inrange-background-color;
-      &:hover {
-        background-color: $--datepicker-inrange-hover-background-color;
-      }
     }
 
     &.current:not(.disabled) span {
       color: $--color-white;
       background-color: $--datepicker-active-color;
     }
-    &.start-date div,
-    &.end-date div {
+    &.start-date div > span,
+    &.end-date div > span {
+      background: $--color-primary;
       color: $--color-white;
     }
 

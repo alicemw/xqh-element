@@ -34,6 +34,7 @@
   }
 
   @include m(info) {
+    background: $--color-info-lighter;
     .el-message__content {
       color: $--message-info-font-color;
     }
