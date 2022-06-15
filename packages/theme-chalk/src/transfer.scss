@@ -12,7 +12,16 @@
   @include e(buttons) {
     display: inline-block;
     vertical-align: middle;
-    padding: 0 30px;
+    padding: 0 16px;
+    & button {
+      display: block;
+      margin-left: 0;
+      margin-right: 0;
+      background-color: #fff;
+      border-color: #d9d9d9;
+      color: #595959;
+      padding: 8px;
+    }
   }
 
   @include e(button) {
@@ -46,6 +55,7 @@
 
     &:nth-child(2) {
       margin: 0;
+      margin-left: 0 !important;
     }
 
     i, span {
@@ -59,7 +69,6 @@
 }
 
 @include b(transfer-panel) {
-  border: 1px solid $--transfer-border-color;
   border-radius: $--transfer-border-radius;
   overflow: hidden;
   background: $--color-white;
@@ -72,6 +81,8 @@
 
   @include e(body) {
     height: $--transfer-panel-body-height;
+    border: 1px solid #d9d9d9;
+    box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.1);
 
     @include when(with-footer) {
       padding-bottom: $--transfer-panel-footer-height;
@@ -104,10 +115,15 @@
 
     &.el-checkbox {
       color: $--color-text-regular;
+      margin-right: 0;
     }
 
     &:hover {
       color: $--color-primary;
+      background-color: #EDF4FF;
+      & .el-checkbox__inner {
+        border-color: $--color-primary;
+      }
     }
 
     &.el-checkbox .el-checkbox__label {
@@ -121,7 +137,7 @@
 
     .el-checkbox__input {
       position: absolute;
-      top: 8px;
+      top: 12px;
     }
   }
 
@@ -156,11 +172,12 @@
     height: $--transfer-panel-header-height;
     line-height: $--transfer-panel-header-height;
     background: $--transfer-panel-header-background-color;
-    margin: 0;
+    margin: 0 0 8px 0;
     padding-left: 15px;
-    border-bottom: 1px solid $--transfer-border-color;
+    border: 1px solid #d9d9d9;
     box-sizing: border-box;
     color: $--color-black;
+    
 
     .el-checkbox {
       display: block;
@@ -168,14 +185,10 @@
 
       .el-checkbox__label {
         font-size: 16px;
-        color: $--color-text-primary;
+        color: #595959;
         font-weight: normal;
 
         span {
-          position: absolute;
-          right: 15px;
-          color: $--color-text-secondary;
-          font-size: 12px;
           font-weight: normal;
         }
       }

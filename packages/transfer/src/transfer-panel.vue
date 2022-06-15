@@ -192,7 +192,7 @@
             ? hasChecked.replace(/\${checked}/g, checkedLength).replace(/\${total}/g, dataLength)
             : noChecked.replace(/\${total}/g, dataLength);
         } else {
-          return `${ checkedLength }/${ dataLength }`;
+          return `(${ checkedLength }项)`;
         }
       },
 
