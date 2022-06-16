@@ -6,7 +6,7 @@
 
 @include b(button) {
   display: inline-block;
-  line-height: 1;
+  line-height: 20px;
   white-space: nowrap;
   cursor: pointer;
   background: $--button-default-background-color;
@@ -115,10 +115,12 @@
     }
   }
   @include when(round) {
+    line-height: 1;
     border-radius: 20px;
     padding: 12px 23px;
   }
   @include when(circle) {
+    line-height: 1;
     border-radius: 50%;
     padding: $--button-padding-vertical;
   }
@@ -138,18 +140,24 @@
     @include button-variant($--button-info-font-color, $--button-info-background-color, $--button-info-border-color);
   }
   @include m(medium) {
+    line-height: 1;
     @include button-size($--button-medium-padding-vertical, $--button-medium-padding-horizontal, $--button-medium-font-size, $--button-medium-border-radius);
     @include when(circle) {
       padding: $--button-medium-padding-vertical;
     }
   }
   @include m(small) {
+    line-height: 18px;
     @include button-size($--button-small-padding-vertical, $--button-small-padding-horizontal, $--button-small-font-size, $--button-small-border-radius);
     @include when(circle) {
       padding: $--button-small-padding-vertical;
     }
+    @include when(round) {
+      line-height: 18px;
+    }
   }
   @include m(mini) {
+    line-height: 1;
     @include button-size($--button-mini-padding-vertical, $--button-mini-padding-horizontal, $--button-mini-font-size, $--button-mini-border-radius);
     @include when(circle) {
       padding: $--button-mini-padding-vertical;
