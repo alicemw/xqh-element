@@ -1,6 +1,6 @@
 {
   "name": "xqh-element",
-  "version": "1.0.3",
+  "version": "1.0.3.1",
   "description": "A Component Library for Vue.js.",
   "main": "lib/xqh-element.common.js",
   "files": [
