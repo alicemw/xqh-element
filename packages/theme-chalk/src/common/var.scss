@@ -525,7 +525,7 @@ $--button-border-radius: $--border-radius-base !default;
 /// padding||Spacing|3
 $--button-padding-vertical: 12px !default;
 /// padding||Spacing|3
-$--button-padding-horizontal: 20px !default;
+$--button-padding-horizontal: 16px !default;
 
 /// fontSize||Font|1
 $--button-medium-font-size: $--font-size-base !default;
@@ -609,7 +609,7 @@ $--cascader-height: 200px !default;
 /// color||Color|0
 $--switch-on-color: $--color-primary !default;
 /// color||Color|0
-$--switch-off-color: $--border-color-base !default;
+$--switch-off-color: #8C8C8C !default;
 /// fontSize||Font|1
 $--switch-font-size: $--font-size-base !default;
 $--switch-core-border-radius: 10px !default;
@@ -729,7 +729,7 @@ $--tag-padding: 0 10px !default;
 /* Tree
 -------------------------- */
 /// color||Color|0
-$--tree-node-hover-background-color: $--background-color-base !default;
+$--tree-node-hover-background-color: #EDF4FF !default;
 /// color||Color|0
 $--tree-font-color: $--color-text-regular !default;
 /// color||Color|0
@@ -877,17 +877,17 @@ $--collapse-content-font-color: $--color-text-primary !default;
 $--transfer-border-color: $--border-color-lighter !default;
 $--transfer-border-radius: $--border-radius-base !default;
 /// height||Other|4
-$--transfer-panel-width: 200px !default;
+$--transfer-panel-width: 232px !default;
 /// height||Other|4
-$--transfer-panel-header-height: 40px !default;
+$--transfer-panel-header-height: 36px !default;
 /// color||Color|0
-$--transfer-panel-header-background-color: $--background-color-base !default;
+$--transfer-panel-header-background-color: #fff !default;
 /// height||Other|4
 $--transfer-panel-footer-height: 40px !default;
 /// height||Other|4
-$--transfer-panel-body-height: 246px !default;
+$--transfer-panel-body-height: 256px !default;
 /// height||Other|4
-$--transfer-item-height: 30px !default;
+$--transfer-item-height: 40px !default;
 /// height||Other|4
 $--transfer-filter-height: 32px !default;
 
