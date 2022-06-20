@@ -28,7 +28,7 @@
         <i
           v-if="clearBtnVisible"
           key="clear"
-          class="el-input__icon el-icon-circle-close"
+          class="el-input__icon el-icon-close"
           @click.stop="handleClear"></i>
         <i
           v-else
