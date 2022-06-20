@@ -40,6 +40,7 @@
       color: $--datepicker-font-color;
       margin: 0 auto;
       border: 1px solid #FFFFFF;
+      border-radius: 2px;
       &:hover {
         color: $--datepicker-hover-font-color;
         border: 1px solid $--color-primary;
