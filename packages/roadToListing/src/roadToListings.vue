@@ -6,6 +6,7 @@
     :key="index"
     :type="item.type"
     :title="item.title"
+    :space="space"
     ></road-to-listing>
   </div>
 </template>
@@ -26,6 +27,7 @@ export default {
   props: {
     roadList: Array,
     active: [String, Number],
+    space: Number,
     processStatus: {
       type: String,
       default: 'process'

@@ -7,7 +7,7 @@
 
 :::demo 设置`active`属性，接受一个字符串或者数字，
 ```html
-<el-roadtolistings :active="active" :roadList="roadList" ></el-roadtolistings>
+<el-roadtolistings :active="active" :roadList="roadList" :space="30"></el-roadtolistings>
 
 <el-button style="margin-top: 12px;" @click="next">下一步</el-button>
 
@@ -15,7 +15,7 @@
   export default {
     data() {
       return {
-        active: 0,
+        active: 3,
         roadList: [
             { title: '上市启蒙', value: 0 },
             { title: '上市规划', value: 1 },
