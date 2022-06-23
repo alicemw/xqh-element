@@ -100,15 +100,7 @@
     </el-radio-group>
   </div>
   <div style="margin-top: 20px">
-    <el-radio-group v-model="radio3" size="small">
-      <el-radio-button label="上海"></el-radio-button>
-      <el-radio-button label="北京" disabled ></el-radio-button>
-      <el-radio-button label="广州"></el-radio-button>
-      <el-radio-button label="深圳"></el-radio-button>
-    </el-radio-group>
-  </div>
-  <div style="margin-top: 20px">
-    <el-radio-group v-model="radio4" disabled size="mini">
+    <el-radio-group v-model="radio4" disabled size="medium">
       <el-radio-button label="上海"></el-radio-button>
       <el-radio-button label="北京"></el-radio-button>
       <el-radio-button label="广州"></el-radio-button>

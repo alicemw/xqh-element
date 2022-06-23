@@ -9,7 +9,7 @@
 
   @include e(inner) {
     display: inline-block;
-    line-height: 1;
+    line-height: 20px;
     white-space: nowrap;
     vertical-align: middle;
     background: $--button-default-background-color;
@@ -26,7 +26,7 @@
     cursor: pointer;
     transition: $--all-transition;
 
-    @include button-size($--button-padding-vertical, $--button-padding-horizontal, $--button-font-size, 0);
+    @include button-size($--button-padding-vertical, 16px, $--button-font-size, 0);
 
     &:hover {
       color: $--color-primary-light-10;
@@ -97,11 +97,13 @@
 
   @include m(medium) {
     & .el-radio-button__inner {
-      @include button-size($--button-medium-padding-vertical, $--button-medium-padding-horizontal, $--button-medium-font-size, 0);
+      line-height: 18px;
+      @include button-size(6px, $--button-medium-padding-horizontal, $--button-medium-font-size, 0);
     }
   }
   @include m(small) {
     & .el-radio-button__inner {
+      line-height: 16px;
       @include button-size($--button-small-padding-vertical, $--button-small-padding-horizontal, $--button-small-font-size, 0);
     }
   }

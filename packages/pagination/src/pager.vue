@@ -93,9 +93,9 @@
       onMouseenter(direction) {
         if (this.disabled) return;
         if (direction === 'left') {
-          this.quickprevIconClass = 'el-icon-d-arrow-left';
+          this.quickprevIconClass = 'el-icon-arrow-left';
         } else {
-          this.quicknextIconClass = 'el-icon-d-arrow-right';
+          this.quicknextIconClass = 'el-icon-arrow-right';
         }
       }
     },
