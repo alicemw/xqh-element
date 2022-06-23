@@ -74,6 +74,13 @@
     @content;
   }
 }
+@mixin bliner($block) {
+  $B: $namespace+'-'+$block+'-liner' !global;
+
+  .#{$B} {
+    @content;
+  }
+}
 
 @mixin e($element) {
   $E: $element !global;
