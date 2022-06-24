@@ -31,6 +31,7 @@
 
     methods: {
       next() {
+        console.log(this.roadList);
         if (this.active < 7) {
             this.active++;
         } else {

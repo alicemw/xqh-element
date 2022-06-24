@@ -14,6 +14,7 @@
 <script>
 import Migrating from 'xqh-element/src/mixins/migrating';
 import roadToListing from './roadToListing.vue';
+import { deepClone } from '@/utils/util';
 
 export default {
   name: 'ElRoadtolistings',
@@ -36,7 +37,7 @@ export default {
 
   computed: {
     showToadList() {
-      let list = [ ...this.roadList ];
+      let list = deepClone(this.roadList);
       let type = 'done';
       list.forEach(item => {
         if (this.active === item.value) {
