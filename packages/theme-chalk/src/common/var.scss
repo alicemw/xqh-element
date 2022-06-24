@@ -525,7 +525,7 @@ $--button-border-radius: 2px !default;
 /// padding||Spacing|3
 $--button-padding-vertical: 9px !default;
 /// padding||Spacing|3
-$--button-padding-horizontal: 12px !default;
+$--button-padding-horizontal: 16px !default;
 
 /// fontSize||Font|1
 $--button-medium-font-size: $--font-size-base !default;
@@ -542,7 +542,7 @@ $--button-small-border-radius: #{$--border-radius-base - 2} !default;
 /// padding||Spacing|3
 $--button-small-padding-vertical: 6px !default;
 /// padding||Spacing|3
-$--button-small-padding-horizontal: 8px !default;
+$--button-small-padding-horizontal: 12px !default;
 /// fontSize||Font|1
 $--button-mini-font-size: 12px !default;
 $--button-mini-border-radius: #{$--border-radius-base - 2} !default;
