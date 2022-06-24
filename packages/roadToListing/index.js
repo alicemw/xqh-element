@@ -1,4 +1,4 @@
-import roadToListing from './src/roadToListings';
+import roadToListing from './src/roadToListings.vue';
 
 /* istanbul ignore next */
 roadToListing.install = function(Vue) {

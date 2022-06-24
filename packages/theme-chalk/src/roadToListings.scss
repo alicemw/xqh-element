@@ -4,9 +4,6 @@
   display: flex;
   position: relative;
 }
-.el-roadToListing-box:last-child > .el-liner {
-  display: none;
-}
 @include b(roadToListings) {
   display: flex;
   align-items: center;

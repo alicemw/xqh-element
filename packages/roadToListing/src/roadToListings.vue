@@ -1,19 +1,7 @@
-<template>
-  <div
-    class="el-roadToListings">
-    <road-to-listing
-    v-for="(item, index) in showToadList"
-    :key="index"
-    :type="item.type"
-    :title="item.title"
-    :space="space"
-    ></road-to-listing>
-  </div>
-</template>
 
 <script>
-import Migrating from 'xqh-element/src/mixins/migrating';
-import roadToListing from './roadToListing.vue';
+  /*eslint-disable*/
+import roadToListing from './roadToListing';
 import { deepClone } from '@/utils/util';
 
 export default {
@@ -23,18 +11,31 @@ export default {
     roadToListing
   },
 
-  mixins: [Migrating],
-
   props: {
     roadList: Array,
     active: [String, Number],
-    space: Number,
-    processStatus: {
-      type: String,
-      default: 'process'
-    }
+    space: Number
   },
-
+  render() {
+    let { showToadList, space } = this;
+    let len = showToadList.length - 1;
+    return (
+      <div class="el-roadToListings">
+        {
+          showToadList.map((item, index) => {
+            return (
+              <road-to-listing 
+                type={item.type}
+                title={item.title}
+                space={space}
+                isEnd={index === len}
+              ></road-to-listing>
+            )
+          }) 
+        }
+      </div>
+    )
+  },
   computed: {
     showToadList() {
       let list = deepClone(this.roadList);
@@ -53,18 +54,7 @@ export default {
 
   data() {
     return {};
-  },
-
-  methods: {
-    getMigratingConfig() {
-      return {
-        props: {
-          'center': 'center is removed.'
-        }
-      };
-    }
-  },
-
-  watch: {}
+  }
 };
 </script>
+

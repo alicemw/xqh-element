@@ -9,7 +9,7 @@
 ```html
 <el-roadtolistings :active="active" :roadList="roadList" :space="30"></el-roadtolistings>
 
-<el-button style="margin-top: 12px;" @click="next">下一步</el-button>
+<el-button style="margin-top: 12px;" @click="next">点击演示下一步</el-button>
 
 <script>
   export default {
@@ -31,7 +31,6 @@
 
     methods: {
       next() {
-        console.log(this.roadList);
         if (this.active < 7) {
             this.active++;
         } else {
