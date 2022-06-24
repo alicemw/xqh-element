@@ -55,6 +55,7 @@
   "rate": "./packages/rate/index.js",
   "steps": "./packages/steps/index.js",
   "step": "./packages/step/index.js",
+  "roadToListing": "./packages/roadToListing/index.js",
   "carousel": "./packages/carousel/index.js",
   "scrollbar": "./packages/scrollbar/index.js",
   "carousel-item": "./packages/carousel-item/index.js",
