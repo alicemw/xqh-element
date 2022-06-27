@@ -4,25 +4,17 @@
   display: flex;
   position: relative;
 }
+.el-roadToListing-box:last-child {
+  margin-right: 0 !important;
+}
+
+.el-roadToListing-box:last-child .el-liner {
+  display: none;
+}
 @include b(roadToListings) {
   display: flex;
   align-items: center;
   cursor: pointer;
-
-  @include m(simple) {
-    padding: 13px 8%;
-    border-radius: 4px;
-    background: $--background-color-base;
-  }
-
-  @include m(horizontal) {
-    white-space: nowrap;
-  }
-
-  @include m(vertical) {
-    height: 100%;
-    flex-flow: column;
-  }
 }
 @include b(roadToListing) {
   display: flex;

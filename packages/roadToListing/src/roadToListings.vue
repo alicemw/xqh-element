@@ -1,6 +1,6 @@
 
 <script>
-  /*eslint-disable*/
+/*eslint-disable*/
 import roadToListing from './roadToListing';
 import { deepClone } from '@/utils/util';
 
@@ -18,20 +18,18 @@ export default {
   },
   render() {
     let { showToadList, space } = this;
-    let len = showToadList.length - 1;
     return (
       <div class="el-roadToListings">
         {
-          showToadList.map((item, index) => {
+          showToadList.map(item => {
             return (
-              <road-to-listing 
+              <road-to-listing
                 type={item.type}
                 title={item.title}
                 space={space}
-                isEnd={index === len}
               ></road-to-listing>
             )
-          }) 
+          })
         }
       </div>
     )
