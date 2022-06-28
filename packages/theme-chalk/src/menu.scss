@@ -27,7 +27,7 @@
   &:hover,
   &:focus {
     outline: none;
-    background-color: $--menu-item-hover-fill;
+    background-color: $--menu-item-hover-fill !important;
   }
 
   @include when(disabled) {
@@ -56,7 +56,6 @@
       height: 60px;
       line-height: 60px;
       margin: 0;
-      border-bottom: 2px solid transparent;
       color: $--color-text-secondary;
 
       a,
@@ -66,7 +65,20 @@
 
       &:not(.is-disabled):hover,
       &:not(.is-disabled):focus{
-        background-color: #fff;
+        background-color: rgba($--color-white, .1) !important;
+      }
+      &.is-active::after {
+          position: absolute;
+          bottom: 0;
+          height: 0;
+          border-bottom-width: 2px;
+          border-color: inherit;
+          border-style: solid;
+          border-top-width: 0;
+          width: 24px;
+          left: 50%;
+          transform: translateX(-12px);
+          content: '';
       }
     }
     & > .el-submenu {
@@ -81,16 +93,29 @@
       }
 
       &.is-active {
+        
         .el-submenu__title {
-          border-bottom: 2px solid $--color-primary;
           color: $--color-text-primary;
+          position: relative;
+          &::after{
+            position: absolute;
+            bottom: 0;
+            height: 0;
+            border-bottom-width: 2px;
+            border-color: inherit;
+            width: 24px;
+            border-style: solid;
+            border-top-width: 0;
+            left: 50%;
+            transform: translateX(-12px);
+            content: '';
+          }
         }
       }
 
       & .el-submenu__title {
         height: 60px;
         line-height: 60px;
-        border-bottom: 2px solid transparent;
         color: $--color-text-secondary;
 
         &:hover {
@@ -123,9 +148,9 @@
     & .el-menu-item:not(.is-disabled):focus {
       outline: none;
       color: $--color-text-primary;
+      background-color: rgba($--color-white, .1) !important;
     }
     & > .el-menu-item.is-active {
-      border-bottom: 2px solid $--color-primary;
       color: $--color-text-primary;
     }
   }
@@ -224,7 +249,7 @@
     @include menu-item;
 
     &:hover {
-      background-color: $--menu-item-hover-fill;
+      background-color: $--menu-item-hover-fill !important;
     }
   }
   & .el-menu {
