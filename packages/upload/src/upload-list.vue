@@ -33,11 +33,13 @@
             'el-icon-circle-check': listType === 'text',
             'el-icon-check': ['picture-card', 'picture'].indexOf(listType) > -1
           }"></i> -->
-          <img :class="{
+          <img 
+            v-if="['picture-card'].indexOf(listType) > -1"
+            :class="{
             'el-icon-upload-success': true,
             'el-icon-circle-check': listType === 'text',
-            'el-icon-check': ['picture-card', 'picture'].indexOf(listType) > -1
-          }" src="../image/frame.png" alt="">
+            'el-icon-check': ['picture-card'].indexOf(listType) > -1
+          }" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAfZJREFUOE9j/P//PzMDFQEjPgPz7mxn2fTxsfYvxn/yIDvZ/jM99OOXvTpJxfMPLjdgNVD/0mLhFz8+lP9jYExiZGAQQNb8n4HhAzMj00IBFo6uG4ZJL9ENxjBQ+uQ059+Mf5cyMDCKEAiJF+xMzEmPTTJ3IatDMVD25FT3nwz/1zIwMnAQFaz/GX6wMrP6PTVJ3wdTDzdQ4/w88Xe/v51lYGCQIMowqCJQEEhx8Ktf1It9CxKCGyhxelrvv///8kkxDKaWmZGx97lpdjncQFBsLn939wV6BOAyvFTajIGdkZmh5clxsBKQKyOFlCVAsQ92ocLZWfrf/v4CeZcgABlmxyfDEHFzM8PXf7/h6rmY2YwfGKddBBsodXqa/5///9Yim+YjqMyw7+Mjhm9ImnAZBtLHwsIS9MwoYxNOAwulTBgc+eXALgEZis8wDANxeRlkiC2fDMOpz88ZzHklMbyJ7CN2JhbzxyYZZ8EuxBcphFyGNVJAguKnJnf9Z2AsIhgr2BQwMk18ZZpVjJIOQfn3+Y8PV4nIcuhGvhBi5TKG5WuUrAfOxwz/NpKS9ZiZmYOeI+VnjMJB8uRU97+M/+cSyoKgxMzGxBqGnI9RvIzsD3C+/vOj7P//f/HYii8mRsa5Eux8XbD8i7O0QQ8cqhWwZMU0VBMAsCgWJLiZikoAAAAASUVORK5CYII=" alt="">
         </label>
         <i class="el-icon-close" v-if="!disabled" @click="$emit('remove', file)"></i>
         <i class="el-icon-close-tip" v-if="!disabled">{{ t('el.upload.deleteTip') }}</i> <!--因为close按钮只在li:focus的时候 display, li blur后就不存在了，所以键盘导航时永远无法 focus到 close按钮上-->
