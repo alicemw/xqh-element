@@ -1,4 +1,4 @@
-export * from './xqh-element'
+export * from './element-ui'
 
-import * as ElementUI from './xqh-element'
+import * as ElementUI from './element-ui'
 export default ElementUI
