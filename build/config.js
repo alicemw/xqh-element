@@ -37,7 +37,7 @@ exports.alias = {
   packages: path.resolve(__dirname, '../packages'),
   examples: path.resolve(__dirname, '../examples'),
   'xqh-element': path.resolve(__dirname, '../'),
-  '@': path.resolve(__dirname, '../src'),
+  '@': path.resolve(__dirname, '../src')
 };
 
 exports.vue = {
