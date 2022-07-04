@@ -28,13 +28,15 @@
           <i class="el-icon-document"></i>{{file.name}}
         </a>
         <label class="el-upload-list__item-status-label">
-          <!-- <i :class="{
+          <i
+          v-if="['picture-card', 'picture'].includes(listType)"
+          :class="{
             'el-icon-upload-success': true,
             'el-icon-circle-check': listType === 'text',
             'el-icon-check': ['picture-card', 'picture'].indexOf(listType) > -1
-          }"></i> -->
+          }"></i>
           <img
-            v-if="['text'].includes(listType)"
+            v-else-if="['text'].includes(listType)"
             :class="{
             'el-icon-upload-success': true,
             'el-icon-circle-check': listType === 'text',
@@ -80,7 +82,6 @@
     mixins: [Locale],
 
     data() {
-      console.log(UPLOAD_SUCCESS, 'UPLOAD_SUCCESS');
       return {
         focusing: false,
         upload_success_src: UPLOAD_SUCCESS
