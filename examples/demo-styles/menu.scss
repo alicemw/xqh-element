@@ -24,4 +24,11 @@
       text-align: left;
     }
   }
+  .demo1 {
+    display: flex;
+    background: linear-gradient(90deg, #346BC0, #1051B5);
+    .el-menu.el-menu--horizontal {
+      border-bottom: none;
+    }
+  }
 }
