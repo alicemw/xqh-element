@@ -12,7 +12,7 @@
         <ul
           role="menubar"
           key={ +this.collapse }
-          style={{ backgroundColor: this.backgroundColor || '' }}
+          style={{ backgroundColor: this.myBackground }}
           class={{
             'el-menu--horizontal': this.mode === 'horizontal',
             'el-menu--collapse': this.collapse,
@@ -129,7 +129,12 @@
       collapseTransition: {
         type: Boolean,
         default: true
-      }
+      },
+      transparent: {
+        type: Boolean,
+        default: false
+      },
+      subBackground: String
     },
     data() {
       return {
@@ -145,6 +150,9 @@
       },
       isMenuPopup() {
         return this.mode === 'horizontal' || (this.mode === 'vertical' && this.collapse);
+      },
+      myBackground(){
+        return this.transparent ? 'transparent' : this.backgroundColor || ''
       }
     },
     watch: {
@@ -323,6 +331,9 @@
     },
     mounted() {
       this.initOpenedMenu();
+      if(this.transparent && !this.subBackground){
+        console.error('el-menu: subBackground prop need!')
+      }
       this.$on('item-click', this.handleItemClick);
       this.$on('submenu-click', this.handleSubmenuClick);
       if (this.mode === 'horizontal') {

@@ -2,7 +2,7 @@
   <li class="el-menu-item"
     role="menuitem"
     tabindex="-1"
-    :style="[paddingStyle, itemStyle, { backgroundColor }]"
+    :style="[paddingStyle, itemStyle, { background: transColor }]"
     :class="{
       'is-active': active,
       'is-disabled': disabled
@@ -58,7 +58,14 @@
         return this.rootMenu.hoverBackground;
       },
       backgroundColor() {
-        return this.rootMenu.backgroundColor || '';
+        return this.rootMenu.myBackground || '';
+      },
+      isSub() {
+        let parent = this.$parent;
+        return ['ElSubmenu', 'ElMenuItemGroup'].indexOf(parent.$options.componentName) > -1;
+      },
+      transColor() {
+        return this.rootMenu.transparent && this.isSub ? this.rootMenu.subBackground : this.backgroundColor;
       },
       activeTextColor() {
         return this.rootMenu.activeTextColor || '';

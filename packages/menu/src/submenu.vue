@@ -229,7 +229,7 @@
       handleTitleMouseleave() {
         if (this.mode === 'horizontal' && !this.rootMenu.backgroundColor) return;
         const title = this.$refs['submenu-title'];
-        title && (title.style.backgroundColor = this.rootMenu.backgroundColor || '');
+        title && (title.style.backgroundColor = this.rootMenu.myBackground || '');
       },
       updatePlacement() {
         this.currentPlacement = this.mode === 'horizontal' && this.isFirstLevel
@@ -268,7 +268,6 @@
         opened,
         paddingStyle,
         titleStyle,
-        backgroundColor,
         rootMenu,
         currentPlacement,
         menuTransitionName,
@@ -278,7 +277,7 @@
         $slots,
         isFirstLevel
       } = this;
-
+      const bgColor = rootMenu.transparent ? rootMenu.subBackground : rootMenu.backgroundColor;
       const popupMenu = (
         <transition name={menuTransitionName}>
           <div
@@ -291,7 +290,7 @@
             <ul
               role="menu"
               class={['el-menu el-menu--popup', `el-menu--popup-${currentPlacement}`]}
-              style={{ backgroundColor: rootMenu.backgroundColor || '' }}>
+              style={{ backgroundColor: bgColor || '' }}>
               {$slots.default}
             </ul>
           </div>
@@ -304,7 +303,7 @@
             role="menu"
             class="el-menu el-menu--inline"
             v-show={opened}
-            style={{ backgroundColor: rootMenu.backgroundColor || '' }}>
+            style={{ backgroundColor: bgColor || '' }}>
             {$slots.default}
           </ul>
         </el-collapse-transition>
@@ -336,7 +335,7 @@
             on-click={this.handleClick}
             on-mouseenter={this.handleTitleMouseenter}
             on-mouseleave={this.handleTitleMouseleave}
-            style={[paddingStyle, titleStyle, { backgroundColor }]}
+            style={[paddingStyle, titleStyle, { background: isFirstLevel ? rootMenu.myBackground : bgColor }]}
           >
             {$slots.title}
             <i class={[ 'el-submenu__icon-arrow', submenuTitleIcon ]}></i>

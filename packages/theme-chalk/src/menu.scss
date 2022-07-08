@@ -148,7 +148,7 @@
     & .el-menu-item:not(.is-disabled):focus {
       outline: none;
       color: $--color-text-primary;
-      background-color: rgba($--color-white, .1) !important;
+      opacity: 0.9;
     }
     & > .el-menu-item.is-active {
       color: $--color-text-primary;
@@ -249,7 +249,7 @@
     @include menu-item;
 
     &:hover {
-      background-color: $--menu-item-hover-fill !important;
+      opacity: 0.9;
     }
   }
   & .el-menu {
