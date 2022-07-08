@@ -9,12 +9,41 @@ export default {
         return 30;
       },
       type: Number
+    },
+    lastDone: {
+      type: Boolean
+    }
+  },
+  data() {
+    return {
+      linerRight: `-${this.space + 5}px`
+    }
+  },
+  watch: {
+    lastDone(val) {
+      if(val) {
+        let { space } = this;
+        let num = 0;
+        let timer = setInterval(() => {
+          if(num < (space + 5)) {
+            num += 1;
+            this.linerRight = `-${num + 5}px`
+          } else {
+            clearInterval(timer);
+            this.linerRight = `-${space + 5}px`
+          }
+        }, 10)
+      };
     }
   },
   render() {
-    let { type, space, title } = this;
+    let { type, space, title, lastDone, linerRight } = this;
     return (
-      <div class="el-roadToListing-box" style={{
+      <div 
+      class={{
+        'el-roadToListing-box': true,
+      }}
+      style={{
         marginRight: `${space}px`
       }}>
         <div class={[
@@ -25,11 +54,14 @@ export default {
             {title}
           </main>
         </div>
-        <div class={[
+        <div
+        ref="liner"
+        class={[
           'el-liner',
           `el-${type}-liner`
         ]} style={{
-          right: `-${space + 5}px`
+          // right: `-${space + 5}px`
+          right: linerRight
         }}></div>
       </div>
     );

@@ -1,4 +1,14 @@
 @import "mixins/mixins";
+@keyframes doc {
+  0% {
+    left: 0;
+    padding: 0px;
+  }
+  100% {
+    left: -8px;
+    padding: 8px;
+  }
+}
 
 .el-roadToListing-box {
   display: flex;
@@ -58,6 +68,7 @@
     height: 100%;
     width: 64px;
     left: -8px;
+    animation: doc .4s 1;
     height: 64px;
     z-index: -1;
     padding: 8px;
@@ -85,6 +96,7 @@
   z-index: -2;
 }
 @include bliner(done) {
+  border: 1px solid #EBEBEB;
   background: linear-gradient(90deg, #558ECF 0%, #1051B5 100%);
 }
 @include bliner(now) {
