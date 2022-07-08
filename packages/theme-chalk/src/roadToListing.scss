@@ -57,10 +57,10 @@
     background: linear-gradient(#558ECF, #1051B5);
     height: 100%;
     width: 64px;
-    left: -6px;
+    left: -8px;
     height: 64px;
     z-index: -1;
-    padding: 6px;
+    padding: 8px;
     border-radius: 50%;
     content: '';
   }
@@ -68,7 +68,7 @@
 @include b(wait) {
   background: #F5F5F5;  
   border: 1px solid #BFBFBF;
-  font-weight: bold;
+  font-weight: 400;
   color: #BFBFBF;
   &:hover {
     background: #EDF4FF;
