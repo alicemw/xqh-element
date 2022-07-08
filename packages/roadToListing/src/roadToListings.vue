@@ -21,9 +21,15 @@ export default {
     return (
       <div class="el-roadToListings">
         {
-          showToadList.map((item, index) => {
+          showToadList.map(item => {
             return (
               <road-to-listing
+                nativeOnClick={
+                  (e) => {
+                    const { type, isLastDone, ...othders } = item;
+                    this.$emit('roadClick', othders, e)
+                  }
+                }
                 type={item.type}
                 title={item.title}
                 lastDone={!!item.isLastDone}

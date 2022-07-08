@@ -12,7 +12,7 @@ export default {
     },
     lastDone: {
       type: Boolean
-    }
+    },
   },
   data() {
     return {
@@ -24,15 +24,16 @@ export default {
       if(val) {
         let { space } = this;
         let num = 0;
+        let tal = space + 5;
         let timer = setInterval(() => {
-          if(num < (space + 5)) {
-            num += 1;
-            this.linerRight = `-${num + 5}px`
+          if(num < tal) {
+            num += 2;
+            this.linerRight = `-${num + 5}px`;
           } else {
             clearInterval(timer);
-            this.linerRight = `-${space + 5}px`
+            this.linerRight = `-${tal}px`;
           }
-        }, 10)
+        }, 10);
       };
     }
   },
@@ -42,10 +43,12 @@ export default {
       <div 
       class={{
         'el-roadToListing-box': true,
+        'el-roadToListing-box-now': type === 'now'
       }}
       style={{
         marginRight: `${space}px`
-      }}>
+      }}
+      >
         <div class={[
           `el-${type}`,
           'el-roadToListing'
@@ -60,7 +63,6 @@ export default {
           'el-liner',
           `el-${type}-liner`
         ]} style={{
-          // right: `-${space + 5}px`
           right: linerRight
         }}></div>
       </div>
