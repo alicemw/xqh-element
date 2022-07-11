@@ -52,6 +52,6 @@
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | space | 每个 step 的间距，不填写将默认30间距。 | number | — | — |
-| roadList | 步骤条的列表，传title和value。 | number，string | — | — |
+| roadList | 步骤条的列表，传title和value。 | array | — | — |
 | active | 当前步骤的标记（意思指到哪一步了）。 | number，string | — | — |
 | roadClick | 当前步骤的点击事件 | function | — | — |

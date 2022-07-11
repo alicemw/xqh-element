@@ -49,14 +49,29 @@ export default {
         marginRight: `${space}px`
       }}
       >
-        <div class={[
-          `el-${type}`,
-          'el-roadToListing'
-        ]}>
-           <main>
-            {title}
-          </main>
-        </div>
+        {
+          type !== 'now' ? (
+            <div class={[
+              `el-${type}`,
+              'el-roadToListing'
+            ]}>
+               <main>
+                {title}
+              </main>
+            </div>
+          ) : (
+            //如果当前状态是now，则展示带圆环的
+            <div class="el-now-fathder">
+              <div class={[
+                `el-${type}`,
+              ]}>
+                <main>
+                  {title}
+                </main>
+              </div>
+            </div>
+          )
+        }
         <div
         ref="liner"
         class={[
