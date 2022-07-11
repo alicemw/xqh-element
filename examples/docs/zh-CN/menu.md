@@ -302,11 +302,13 @@
 ### Menu Attribute
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
+| transparent | 透明模式 | boolean | false / true | false |
+| subBackground | 透明模式时的二级菜单背景,开透明模式时必填 | string | — | #ffffff |
 | mode     | 模式   | string  |   horizontal / vertical   | vertical |
 | collapse  | 是否水平折叠收起菜单（仅在 mode 为 vertical 时可用）| boolean  |   —   | false |
-| background-color  | 菜单的背景色（仅支持 hex 格式） | string |   —   | #ffffff |
-| text-color  | 菜单的文字颜色（仅支持 hex 格式） | string |   —   | #303133 |
-| active-text-color  | 当前激活菜单的文字颜色（仅支持 hex 格式） | string |   —   | #409EFF |
+| background-color  | 菜单的背景色（仅支持 hex 格式） | string |   —   | #343434 |
+| text-color  | 菜单的文字颜色（仅支持 hex 格式） | string |   —   | #ffffff |
+| active-text-color  | 当前激活菜单的文字颜色（仅支持 hex 格式） | string |   —   | #FA8C16 |
 | default-active | 当前激活菜单的 index | string    | — | — |
 | default-openeds | 当前打开的 sub-menu 的 index 的数组 | Array    | — | — |
 | unique-opened  | 是否只保持一个子菜单的展开 | boolean   | — | false   |
