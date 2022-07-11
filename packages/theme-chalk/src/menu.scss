@@ -93,7 +93,7 @@
       }
 
       &.is-active {
-        
+        font-weight: bold;
         .el-submenu__title {
           color: $--color-text-primary;
           position: relative;
@@ -141,6 +141,7 @@
       }
       & .el-menu-item.is-active,
       & .el-submenu.is-active > .el-submenu__title {
+        font-weight: bold;
         color: $--color-text-primary;
       }
     }
@@ -151,6 +152,7 @@
       opacity: 0.9;
     }
     & > .el-menu-item.is-active {
+      font-weight: bold;
       color: $--color-text-primary;
     }
   }
@@ -233,6 +235,7 @@
     vertical-align: middle;
   }
   @include when(active) {
+    font-weight: bold;
     color: $--color-primary;
     i {
       color: inherit;

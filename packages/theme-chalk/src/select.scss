@@ -146,6 +146,7 @@
       flex-shrink: 0;
 
       &:hover {
+        color: red;
         background-color: $--color-text-secondary;
       }
 
@@ -154,5 +155,8 @@
         transform: translate(0, .5px);
       }
     }
+  }
+  .el-tag.el-tag--info .el-tag__close:hover {
+    color: $--color-textStar;
   }
 }
