@@ -240,20 +240,6 @@ export function objToArray(obj) {
   return isEmpty(obj) ? [] : [obj];
 }
 
-// export function deepClone(sourceObj) {
-//   if(!sourceObj && typeof sourceObj != 'object') {
-//       throw new Error('This is not object or sourceObj is empty!')
-//   };
-//   const targetObj = sourceObj.constructor === Array ? [] : {};
-//   Object.keys(sourceObj).forEach(item => {
-//     if(sourceObj[item] && typeof sourceObj[item] === 'object') {
-//         targetObj[item] = deepClone(sourceObj[item]);
-//     } else {
-//       targetObj[item] = sourceObj[item];
-//     };
-//   });
-//   return targetObj;
-// }
 export function deepClone(sourceObj) {
   if (!sourceObj && typeof sourceObj !== 'object') {
     throw new Error('this is not object or sourceObj is empty');

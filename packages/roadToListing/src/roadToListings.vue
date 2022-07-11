@@ -24,8 +24,15 @@ export default {
           showToadList.map(item => {
             return (
               <road-to-listing
+                nativeOnClick={
+                  (e) => {
+                    const { type, isLastDone, ...othders } = item;
+                    this.$emit('roadClick', othders, e)
+                  }
+                }
                 type={item.type}
                 title={item.title}
+                lastDone={!!item.isLastDone}
                 space={space}
               ></road-to-listing>
             )
@@ -38,9 +45,10 @@ export default {
     showToadList() {
       let list = deepClone(this.roadList);
       let type = 'done';
-      list.forEach(item => {
+      list.forEach((item, index) => {
         if (this.active === item.value) {
           item.type = 'now';
+          if(list[index - 1]) list[index - 1]['isLastDone'] = true;
           type = 'wait';
         } else {
           item.type = type;

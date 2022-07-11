@@ -7,7 +7,7 @@
 
 :::demo 设置`active`属性，接受一个字符串或者数字，
 ```html
-<el-roadtolistings :active="active" :roadList="roadList" :space="30"></el-roadtolistings>
+<el-roadtolistings :active="active" :roadList="roadList" :space="30" @roadClick="roadClick"></el-roadtolistings>
 
 <el-button style="margin-top: 12px;" @click="next">点击演示下一步</el-button>
 
@@ -30,6 +30,9 @@
     },
 
     methods: {
+      roadClick(e) {
+        console.log(e);
+      },
       next() {
         if (this.active < 7) {
             this.active++;
@@ -51,3 +54,4 @@
 | space | 每个 step 的间距，不填写将默认30间距。 | number | — | — |
 | roadList | 步骤条的列表，传title和value。 | number，string | — | — |
 | active | 当前步骤的标记（意思指到哪一步了）。 | number，string | — | — |
+| roadClick | 当前步骤的点击事件 | function | — | — |
