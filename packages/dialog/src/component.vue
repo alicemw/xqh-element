@@ -15,7 +15,7 @@
         :class="['el-dialog', { 'is-fullscreen': fullscreen, 'el-dialog--center': center }, customClass]"
         ref="dialog"
         :style="style">
-        <div class="el-dialog__header">
+        <div :class="[getHeaderClass]">
           <slot name="title">
             <span class="el-dialog__title">{{ title }}</span>
           </slot>
@@ -38,6 +38,8 @@
 </template>
 
 <script>
+/* eslint-disable */
+
   import Popup from 'xqh-element/src/utils/popup';
   import Migrating from 'xqh-element/src/mixins/migrating';
   import emitter from 'xqh-element/src/mixins/emitter';
@@ -48,6 +50,10 @@
     mixins: [Popup, emitter, Migrating],
 
     props: {
+      type: {
+        String,
+        default: ''
+      },
       title: {
         type: String,
         default: ''
@@ -116,7 +122,6 @@
         key: 0
       };
     },
-
     watch: {
       visible(val) {
         if (val) {
@@ -142,6 +147,11 @@
     },
 
     computed: {
+      getHeaderClass() {
+        return {
+          'xqh': 'el-dialog__header_xqh',
+        }[this.type] || 'el-dialog__header';
+      },
       style() {
         let style = {};
         if (!this.fullscreen) {

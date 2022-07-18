@@ -14,6 +14,7 @@ Dialog 弹出一个对话框，适合需要定制性更大的场景。
   title="提示"
   :visible.sync="dialogVisible"
   width="30%"
+  type="xqh"
   :before-close="handleClose">
   <span>这是一段信息</span>
   <span slot="footer" class="dialog-footer">
@@ -56,7 +57,7 @@ Dialog 组件的内容可以是任意的，甚至可以是表格或表单，下�
 <!-- Table -->
 <el-button type="text" @click="dialogTableVisible = true">打开嵌套表格的 Dialog</el-button>
 
-<el-dialog title="收货地址" :visible.sync="dialogTableVisible">
+<el-dialog title="收货地址" :visible.sync="dialogTableVisible" >
   <el-table :data="gridData">
     <el-table-column property="date" label="日期" width="150"></el-table-column>
     <el-table-column property="name" label="姓名" width="200"></el-table-column>

@@ -11,6 +11,7 @@
   box-shadow: $--dialog-box-shadow;
   box-sizing: border-box;
   width: 50%;
+  overflow: hidden;
 
   @include when(fullscreen) {
     width: 100%;
@@ -33,34 +34,68 @@
   @include e(header) {
     padding: $--dialog-padding-primary;
     padding-bottom: 10px;
-  }
-
-  @include e(headerbtn) {
-    position: absolute;
-    top: $--dialog-padding-primary;
-    right: $--dialog-padding-primary;
-    padding: 0;
-    background: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font-size: $--message-close-size;
-
-    .el-dialog__close {
-      color: $--color-info;
+    .el-dialog__title {
+      @extend .base-title;
+      color: $--color-text-primary;
     }
-
-    &:focus, &:hover {
+    .el-dialog__headerbtn {
+      position: absolute;
+      top: $--dialog-padding-primary;
+      right: $--dialog-padding-primary;
+      padding: 0;
+      background: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-size: $--message-close-size;
+  
       .el-dialog__close {
-        color: $--color-primary;
+        color: #bfbfbf;
+      }
+  
+      &:focus, &:hover {
+        .el-dialog__close {
+          color: $--color-primary;
+        }
+      }
+    }
+  }
+  @include e(header_xqh) {
+    font-family: $--family;
+    font-weight: bold;
+    line-height: 48px;
+    background-image: linear-gradient(to right, $--color-primary, #113B85);
+    padding-left: 30px;
+    height: 48px;
+    .el-dialog__title {
+      @extend .base-title;
+      color: #ffffff;
+    }
+    .el-dialog__headerbtn {
+      position: absolute;
+      right: $--dialog-padding-primary;
+      padding: 0;
+      background: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-size: $--message-close-size;
+  
+      .el-dialog__close {
+        color: #CCDBF8;
+      }
+  
+      &:focus, &:hover {
+        .el-dialog__close {
+          color: #ffffff;
+        }
       }
     }
   }
 
-  @include e(title) {
+  .base-title {
     line-height: $--dialog-font-line-height;
     font-size: $--dialog-title-font-size;
-    color: $--color-text-primary;
   }
 
   @include e(body) {
