@@ -65,7 +65,7 @@
     font-weight: bold;
     line-height: 48px;
     background-image: linear-gradient(to right, $--color-primary, #113B85);
-    padding-left: 30px;
+    padding: 0 30px;
     height: 48px;
     .el-dialog__title {
       @extend .base-title;

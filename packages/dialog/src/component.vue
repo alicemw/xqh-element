@@ -52,7 +52,7 @@
     props: {
       type: {
         String,
-        default: ''
+        default: 'xqh'
       },
       title: {
         type: String,
@@ -149,6 +149,7 @@
     computed: {
       getHeaderClass() {
         return {
+          'init': 'el-dialog__header',
           'xqh': 'el-dialog__header_xqh',
         }[this.type] || 'el-dialog__header';
       },

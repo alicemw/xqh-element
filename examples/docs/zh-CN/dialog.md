@@ -174,6 +174,7 @@ Dialog 组件的内容可以是任意的，甚至可以是表格或表单，下�
   title="提示"
   :visible.sync="centerDialogVisible"
   width="30%"
+  type="init"
   center>
   <span>需要注意的是内容是默认不居中的</span>
   <span slot="footer" class="dialog-footer">
@@ -221,6 +222,7 @@ Dialog 的内容是懒渲染的，即在第一次被打开之前，传入的默�
 | before-close | 关闭前的回调，会暂停 Dialog 的关闭 | function(done)，done 用于关闭 Dialog | — | — |
 | center | 是否对头部和底部采用居中布局 | boolean | — | false |
 | destroy-on-close | 关闭时销毁 Dialog 中的元素 | boolean | — | false |
+| type | 组件颜色类型 | string | init(为原有类型),xqh(为星启航定制类型) | xqh |
 
 ### Slot
 | name | 说明 |
