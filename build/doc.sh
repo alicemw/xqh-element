@@ -9,6 +9,6 @@ cp -R ./examples/xqh-element/. ../xqh-doc
 cd ../xqh-doc
 # commit
   git add -A
-  git commit -m "[版本更新] $VERSION"
+  git commit -m "[版本更新] 1.0.14"
   git push
 echo "deploy end!"
