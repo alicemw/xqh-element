@@ -38,7 +38,7 @@
   position: absolute;
   background: linear-gradient(#558ECF, #1051B5);
   border-radius: 50%;
-  z-index: 99999;
+  z-index: 999;
   padding: 8px;
   left: -8px;
   top: -8px;
@@ -72,7 +72,7 @@
 @include b(roadToListing) {
   position: absolute;
   display: flex;
-  z-index: 99999;
+  z-index: 999;
   @extend .base-roadToListing;
   & > main {
     @extend .roadToListing-main;
@@ -120,7 +120,7 @@
   left: 32px;
   top: 50%;
   margin-top: -10px;
-  z-index: 9998;
+  z-index: 998;
 }
 @include bliner(done) {
   border: 1px solid #EBEBEB;
