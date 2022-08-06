@@ -7,20 +7,114 @@
 :::demo 要使用它，只需要在`el-input-number`元素中使用`v-model`绑定变量即可，变量的初始值即为默认值。
 ```html
 <template>
-    <xqh-radar v-model="num" @change="handleChange" :min="1" :max="10" label="描述文字"></xqh-radar>
+    <xqh-radar :options="options"></xqh-radar>
 </template>
 <script>
+  const options = {
+    legend: {
+      data: [
+        {
+            code: 'technology',
+            name: '核心科技',
+            max: 100
+          },
+          {
+            code: 'situation',
+            name: '财务状况',
+            max: 100
+          },
+          {
+            code: 'operation',
+            name: '业务经营',
+            max: 100
+          },
+          {
+            code: 'structure',
+            name: '股权结构',
+            max: 100
+          },
+          {
+            code: 'governance',
+            name: '公司治理',
+            max: 100
+          },
+          {
+            code: 'development',
+            name: '持续发展',
+            max: 100
+          },
+      ]
+    },
+    series: [
+      {
+        name: '行业均值',
+        type: 'bar',
+        data: [
+          {
+            code: 'technology',
+            value: 234,
+          },
+          {
+            code: 'situation',
+            value: 90,
+          },
+          {
+            code: 'operation',
+            value: 45,
+          },
+          {
+            code: 'structure',
+            value: '12',
+          },
+          {
+            code: 'governance',
+            value: 89,
+          },
+          {
+            code: 'development',
+            value: 60,
+          },
+        ],
+        full: false,
+        color: '#ecaa42',
+        width: 3
+      },
+      // {
+      //   name: '企业得分',
+      //   type: 'qi',
+      //   data: [10, 40, 50, 82, 82, 90],
+      //   full: true,
+      //   color: '#1051B5',
+      //   opacity: .5
+      // },
+      {
+        name: '企业得分',
+        type: 'qi',
+        data: [
+          {
+            code: 'technology',
+            value: 89,
+          },
+          {
+            code: 'development',
+            value: 60,
+          },
+        ],
+        width: 3,
+        full: true,
+        color: '#1051B5',
+        opacity: .5
+      },
+    ]
+  };
   export default {
     data() {
       return {
-        num: 1
+        num: 1,
+        options
       };
     },
-    methods: {
-      handleChange(value) {
-        console.log(value);
-      }
-    }
+    methods: {}
   };
 </script>
 ```

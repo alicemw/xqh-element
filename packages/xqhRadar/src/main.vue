@@ -2,6 +2,8 @@
 
 <script type="text/babel">
 /* eslint-disable */
+import { deepClone } from '@/utils/util';
+
   const bgArr = [
     '#e5ebf8',
     '#d0d6ed',
@@ -22,37 +24,13 @@
     'big': 500,
     'Oversized': 600
   }
-  const option = {
-    tooltip: {},
-    legend: {
-      data: ['销量']
-    },
-    xAxis: {
-      data: ['核心科技', '财务状况', '业务经营', '股权结构', '公司治理', '持续发展'],
-      max: []
-    },
-    yAxis: {},
-    series: [
-      {
-        name: '行业均值',
-        type: 'bar',
-        data: [72, 20, 36, 10, 10, 20],
-      },
-      {
-        name: '企业得分',
-        type: 'qi',
-        data: [50, 20, 36, 10, 10, 20],
-      },
-    ]
-  };
+  
   export default {
     name: 'xqhRadar',
     data() {
       return {
         defaultXY: typeobj[this.type],
         s: 5,
-        dataList6: [["核心科技", 0.5], ["财务状况", 0.6], ["业务经营", 0.4], ["股权结构", 0.8], ["公司治理", 0.7],["持续发展", 0.9]],
-        dataList9: [["技术布局", 0.5], ["技术质量", 0.6], ["技术影响力", 0.4], ["技术生命力", 0.8], ["研发效率", 0.7],["研发稳定性", 0.9], ["产学研合作", 0.9],["国际布局", 0.9],["创新强度", 0.9],],
       }
     },
     methods: {
@@ -63,10 +41,28 @@
         default() {
           return 'Oversized'
         }
+      },
+      options: {
+        default() {
+          return {};
+        }
       }
     },
+    computed: {
+      legendObj() {
+        const { legend } = this.options;
+        if(!legend) return null;
+        let { data = [] } = legend;
+        let obj = {};
+        data.forEach(item => {
+          if(!obj[item.code]) obj[item.code] = item;
+        });
+        return obj;
+      },
+    },
     render() {
-      let data = this.dataList6;
+      const { legend } = this.options;
+      let { data } = legend;
       let step = data.length;
       let r = this.defaultXY;
       let mapList = [];
@@ -110,19 +106,63 @@
           }
         };
       };
-      let poitList = [];
-      for(let i = 0;i < step;i++) {
-          let rad = 2 * Math.PI/step * i;
-          let x = r + Math.sin(rad) * r * 0.5 * data[i][1];
-          let y = r + Math.cos(rad) * r * 0.5 * data[i][1];
-          poitList.push({
-            x, y
-          });
-      };
+      
       let styleobj = {
         height: typeStyleObj[this.type],
         width: typeStyleObj[this.type]
-       };
+      };
+      let poitList = [];
+      let linePoiList = [];
+      try {
+        const { series } = this.options;
+        if(!series || series.length === 0) return;
+        const legendObj = this.legendObj;
+        series.forEach(item => {
+          const { full = false, color, data, width, opacity } = item;
+          let points = '';
+          data.forEach((element, i) => {
+            const { code, value } = element;
+            const { max } = legendObj[code];
+            let proportion = isNaN(+value) ? false : (value / max);
+            if(proportion) {
+              proportion = proportion > 1 ? 1 : proportion;
+              const rad = 2 * Math.PI/step * i;
+              const x = r + Math.sin(rad) * r * 0.5 * proportion;
+              const y = r + Math.cos(rad) * r * 0.5 * proportion;
+              points += `${x},${y} `
+            };
+          });
+          let style = {
+            ['fill-opacity']: full ? opacity : 0
+          };
+          if(color) style.stroke = color;
+          if(width) {
+            style['stroke-width'] = width
+          };
+          if(full) {
+            style['fill'] = color;
+          };
+
+          const poitLen = points.split(' ').filter(Boolean).length;
+          if(points && poitLen === step) {
+            poitList.push({
+              points,
+              style
+            })
+          } else {
+            linePoiList = points.split(' ').filter(Boolean).map(iop => {
+              let [x, y] = iop.split(',');
+              return {
+                x,
+                y,
+                style
+              }
+            })
+          }
+        })
+      } catch(e) {
+        console.log(e)
+      };
       return (
         <div class={{
           "canton": true,
@@ -162,15 +202,25 @@
               }
               {
                 poitList.map(item => {
+                  const { points, style } = item;
                   return (
-                    <circle cx={item.x} cy={item.y} r="3" stroke="green" stroke-width="1" fill="yellow" />
+                    <polygon
+                    points={points}
+                    style={style}/>
+                  )
+                })
+              }
+              {
+                linePoiList.map(item => {
+                  const { x, y, style } = item;
+                  let defaultXY = this.defaultXY;
+                  return (
+                    <line x1={x} y1={y} x2={defaultXY} y2={defaultXY}
+                    style={style}/>
                   )
                 })
               }
             </svg>
-            <footer>
-              sfsfds
-            </footer>
           </div>
           <el-button onClick={() => {
             this.dataList6 = this.dataList9;
