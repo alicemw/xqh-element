@@ -2,7 +2,11 @@
 
 <script type="text/babel">
 /* eslint-disable */
-
+// <animateTransform
+//     from={'400 400'}
+//     to={points}
+//     dur="10s"
+//     />
   const bgArr = [
     '#e5ebf8',
     '#d0d6ed',
@@ -21,7 +25,7 @@
     'mini': 300,
     'init': 400,
     'big': 500,
-    'Oversized': 600
+    'Oversized': 800
   }
   const rotatePoint = (point, angle, originPoint = {x: 0, y: 0}) => {
       const cosA = Math.cos(angle * Math.PI);
@@ -29,7 +33,7 @@
       const rx = originPoint.x + (point.x - originPoint.x) * cosA - (point.y - originPoint.y) * sinA;
       const ry = originPoint.y + (point.x - originPoint.x) * sinA - (point.y - originPoint.y) * cosA;
       return { x: rx,y: ry };
-  }
+  };
   export default {
     name: 'xqhRadar',
     data() {
@@ -59,22 +63,53 @@
         if(!legend) return null;
         let { data = [] } = legend;
         let obj = {};
-        data.forEach(item => {
+        data.forEach((item, index) => {
+          item.ind = index;
           if(!obj[item.code]) obj[item.code] = item;
         });
         return obj;
       },
+      handelSeries() {
+        const findItem = (arr, code) => {
+          const len = arr.length;
+          for(let i = 0;i < len;i ++) {
+            if(arr[i] && code === arr[i].code) {
+              return arr[i];
+            }
+          };
+          return {
+            code,
+            value: '-'
+          };
+        };
+        const { series, legend } = this.options;
+        const legendData = legend.data;
+        const len = legendData.length;
+        series.forEach(item => {
+          let arr = item.data;
+          let list = [];
+          for(let i = 0;i < len;i ++) {
+            if(arr[i] && arr[i].code === legendData[i].code) {
+              list[i] = arr[i];
+            } else {
+              list[i] = findItem(arr, legendData[i].code);
+            };
+          };
+          item.data = list;
+        });
+        return series;
+      }
     },
     render() {
       const { legend = {} } = this.options;
-      let { data = [] } = legend;
-      let step = data.length;
+      const legendData = legend.data;
+      let step = legendData.length;
+      const titleDistance = 1.3;
       if(step === 0) return;
       let r = this.defaultXY;
       let mapList = [];
       for(let s = this.s; s > 0; s--) {
         let item = '';
-        let othder = ''
         for(let i = 0;i < step;i++) {
             let rad = 2 * Math.PI / step * i;
             let x0 = r + Math.sin(rad) * r * (s / 10);
@@ -82,10 +117,9 @@
             const { x, y } = rotatePoint({x: x0, y: y0}, 180, {x: r, y: r});
             item += `${x},${y} `;
         };
-        mapList.push(item + othder)
+        mapList.push(item)
       };
       let lineList = [];
-      let borderList = [];
       const mapOneArr = mapList[0].split(' ') || [];
       let len = mapOneArr.length;
       for(let i = 0;i < len;i ++) {
@@ -96,32 +130,29 @@
             x1: arr[0],
             y1: arr[1]
           });
-          if(mapOneArr[i + 1]) {
-            let arrNext = mapOneArr[i + 1].split(',');
-            borderList.push({
-              x1: arr[0],
-              y1: arr[1],
-              x2: arrNext[0],
-              y2: arrNext[1]
-            })
-          } else {
-            borderList.push({
-              x1: arr[0],
-              y1: arr[1],
-              x2: mapOneArr[0].split(',')[0],
-              y2: mapOneArr[0].split(',')[1]
-            })
-          }
         };
       };
       let styleobj = {
         height: typeStyleObj[this.type],
         width: typeStyleObj[this.type]
       };
+      const getTitle = () => {
+        return legendData.map((item, i) => {
+          const rad = 2 * Math.PI / step * i;
+          const x0 = r + Math.sin(rad) * r * 0.5 * titleDistance;
+          const y0 = r + Math.cos(rad) * r * 0.5 * titleDistance;
+          const {x, y} = rotatePoint({x: x0, y: y0}, 180, {x: r, y: r});
+          return {
+            x: x - 40,
+            y,
+            ...item,
+          }
+        })
+      }
       let poitList = [];
       let linePoiList = [];
+      const series = this.handelSeries;
       try {
-        const { series = [] } = this.options;
         const legendObj = this.legendObj;
         series.forEach(item => {
           const { full = false, color, data = [], width, opacity } = item;
@@ -129,10 +160,10 @@
           data.forEach((element, i) => {
             const { code, value } = element;
             const { max } = legendObj[code];
+            const rad = 2 * Math.PI / step * i;
             let proportion = isNaN(+value) ? false : (value / max);
             if(proportion) {
               proportion = proportion > 1 ? 1 : proportion;
-              const rad = 2 * Math.PI/step * i;
               const x0 = r + Math.sin(rad) * r * 0.5 * proportion;
               const y0 = r + Math.cos(rad) * r * 0.5 * proportion;
               const { x, y } = rotatePoint({x: x0, y: y0}, 180, {x: r, y: r});
@@ -149,7 +180,6 @@
           if(full) {
             style['fill'] = color;
           };
-
           const poitLen = points.split(' ').filter(Boolean).length;
           if(points && poitLen === step) {
             poitList.push({
@@ -157,16 +187,18 @@
               style
             })
           } else {
-            linePoiList = points.split(' ').filter(Boolean).map(iop => {
+            let mapLine = points.split(' ').filter(Boolean).map(iop => {
               let [x, y] = iop.split(',');
               return {
                 x,
                 y,
                 style
               }
-            })
+            });
+            linePoiList = [ ...linePoiList, ...mapLine ]
           }
         })
+        console.log(linePoiList, poitList, 'poitList')
       } catch(e) {
         console.log(e)
       };
@@ -199,21 +231,19 @@
                 })
               }
               {
-                borderList.map(item => {
-                  const { x1, y1, x2, y2 } = item;
-                  return (
-                    <line x1={x1} y1={y1} x2={x2} y2={y2}
-                    style={`stroke: ${lineBg};`}/>
-                  )
-                })
+                <polygon points={mapList[0]}
+                fill="none"
+                style={`stroke: ${lineBg};`}/>
               }
+              
               {
                 poitList.map(item => {
                   const { points, style } = item;
                   return (
                     <polygon
                     points={points}
-                    style={style}/>
+                    style={style}>
+                    </polygon>
                   )
                 })
               }
@@ -228,14 +258,38 @@
                 })
               }
               { 
-                mapList[0].split(' ').map((item, i) => {
-                  const [x, y] = item.split(',');
+                getTitle().map((item, i) => {
+                  const { x, y, name } = item
                   return (
-                    <text x={x} y={y}>{i}</text>
+                    <text x={x} y={y}>{name}</text>
                   )
                 })
               }
             </svg>
+            <footer>
+              {
+                series.map(item => {
+                  const { full, name, color } = item;
+                  let styObj = {
+                    border: `1px solid ${color}`,
+                    borderRadius: '50%',
+                    display: 'inline-block',
+                    width: '12px',
+                    height: '12px',
+                    margin: '0 10px'
+                  };
+                  if(full) {
+                    styObj['background'] = color;
+                  }
+                  return (
+                    <div style="padding: 0 12px;">
+                      <i style={styObj}></i>
+                      <span>{name}</span>
+                    </div>
+                  )
+                })
+              }
+            </footer>
           </div>
           <el-button onClick={() => {
             this.dataList6 = this.dataList9;

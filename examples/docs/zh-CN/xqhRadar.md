@@ -14,50 +14,50 @@
     legend: {
       data: [
         {
-            code: 'technology',
-            name: '核心科技',
-            max: 100
-          },
-          {
-            code: 'situation',
-            name: '财务状况',
-            max: 100
-          },
-          {
-            code: 'operation',
-            name: '业务经营',
-            max: 100
-          },
-          {
-            code: 'structure',
-            name: '股权结构',
-            max: 100
-          },
-          {
-            code: 'governance',
-            name: '公司治理',
-            max: 100
-          },
-          {
-            code: 'development',
-            name: '持续发展',
-            max: 100
-          },
-          // {
-          //   code: 'structure',
-          //   name: '股权结构',
-          //   max: 100
-          // },
-          // {
-          //   code: 'governance',
-          //   name: '公司治理',
-          //   max: 100
-          // },
-          // {
-          //   code: 'development',
-          //   name: '持续发展',
-          //   max: 100
-          // },
+          code: 'technology',
+          name: '核心科技',
+          max: 100
+        },
+        {
+          code: 'structure',
+          name: '股权结构',
+          max: 100
+        },
+        {
+          code: 'governance',
+          name: '公司治理',
+          max: 100
+        },
+        {
+          code: 'development',
+          name: '持续发展',
+          max: 100
+        },
+        {
+          code: 'situation',
+          name: '财务状况',
+          max: 100
+        },
+        {
+          code: 'operation',
+          name: '业务经营',
+          max: 100
+        },
+        {
+          code: 'gfsaf',
+          name: '对外延伸',
+          max: 100
+        },
+        {
+          code: 'ffsgsds',
+          name: '技术生命力',
+          max: 100
+        },
+        {
+          code: 'fsdfs',
+          name: '技术影响力',
+          max: 100
+        },
       ]
     },
     series: [
@@ -65,6 +65,18 @@
         name: '行业均值',
         type: 'bar',
         data: [
+          {
+            code: 'structure',
+            value: '12',
+          },
+          {
+            code: 'governance',
+            value: 89,
+          },
+          {
+            code: 'development',
+            value: 60,
+          },
           {
             code: 'technology',
             value: 65,
@@ -78,49 +90,61 @@
             value: 45,
           },
           {
-            code: 'structure',
-            value: '12',
+            code: 'gfsaf',
+            value: 45,
           },
           {
-            code: 'governance',
-            value: 89,
+            code: 'ffsgsds',
+            value: 23,
           },
           {
-            code: 'development',
-            value: 60,
+            code: 'fsdfs',
+            value: 78,
           },
         ],
         full: false,
         color: '#ecaa42',
-        width: 3
+        width: 5
       },
       {
         name: '企业得分',
         type: 'qi',
         data: [
           {
-            code: 'technology',
+            code: 'structure',
+            value: '67',
+          },
+          {
+            code: 'governance',
             value: 89,
           },
           {
             code: 'development',
-            value: 60,
+            value: 53,
           },
           {
-            code: 'operation',
+            code: 'technology',
+            value: 23,
+          },
+          {
+            code: 'situation',
             value: 90,
           },
           {
-            code: 'structure',
-            value: 43,
+            code: 'operation',
+            value: 45,
           },
           {
-            code: 'governance',
-            value: 43,
+            code: 'gfsaf',
+            value: 14,
           },
           {
-            code: 'development',
-            value: 23,
+            code: 'ffsgsds',
+            value: 35,
+          },
+          {
+            code: 'fsdfs',
+            value: 64,
           },
         ],
         width: 2,
@@ -137,7 +161,19 @@
         options
       };
     },
-    methods: {}
+    methods: {
+
+    },
+    mounted() {
+      //Math.ceil(Math.random()*10)
+      // setInterval(() => {
+      //   this.options.series.forEach(element => {
+      //     element.data.forEach(item => {
+      //       item.value = Math.ceil(Math.random()*100);
+      //     })
+      //   });
+      // }, 3000);
+    },
   };
 </script>
 ```
