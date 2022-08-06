@@ -16,34 +16,67 @@
     'big': 300,
     'Oversized': 400
   };
+  const typeStyleObj = {
+    'mini': 300,
+    'init': 400,
+    'big': 500,
+    'Oversized': 600
+  }
+  const option = {
+    tooltip: {},
+    legend: {
+      data: ['销量']
+    },
+    xAxis: {
+      data: ['核心科技', '财务状况', '业务经营', '股权结构', '公司治理', '持续发展'],
+      max: []
+    },
+    yAxis: {},
+    series: [
+      {
+        name: '行业均值',
+        type: 'bar',
+        data: [72, 20, 36, 10, 10, 20],
+      },
+      {
+        name: '企业得分',
+        type: 'qi',
+        data: [50, 20, 36, 10, 10, 20],
+      },
+    ]
+  };
   export default {
     name: 'xqhRadar',
     data() {
       return {
         defaultXY: typeobj[this.type],
+        s: 5,
         dataList6: [["核心科技", 0.5], ["财务状况", 0.6], ["业务经营", 0.4], ["股权结构", 0.8], ["公司治理", 0.7],["持续发展", 0.9]],
         dataList9: [["技术布局", 0.5], ["技术质量", 0.6], ["技术影响力", 0.4], ["技术生命力", 0.8], ["研发效率", 0.7],["研发稳定性", 0.9], ["产学研合作", 0.9],["国际布局", 0.9],["创新强度", 0.9],],
       }
+    },
+    methods: {
     },
     props: {
       type: {
         type: String,
         default() {
-          return 'big'
+          return 'Oversized'
         }
       }
     },
     render() {
-      let step = this.dataList6.length;
+      let data = this.dataList6;
+      let step = data.length;
       let r = this.defaultXY;
       let mapList = [];
-      for(let s = 5; s > 0; s--) {
+      for(let s = this.s; s > 0; s--) {
         let item = '';
         for(let i = 0;i < step;i++) {
             let rad = 2 * Math.PI/step * i;
-            let x = r + Math.sin(rad)*r*(s/10);
-            let y = r + Math.cos(rad)*r*(s/10);
-            item += `${x},${y} `
+            let x = r + Math.sin(rad) * r * (s / 10);
+            let y = r + Math.cos(rad) * r * (s / 10);
+            item += `${x},${y} `;
         };
         mapList.push(item)
       };
@@ -77,16 +110,25 @@
           }
         };
       };
+      let poitList = [];
+      for(let i = 0;i < step;i++) {
+          let rad = 2 * Math.PI/step * i;
+          let x = r + Math.sin(rad) * r * 0.5 * data[i][1];
+          let y = r + Math.cos(rad) * r * 0.5 * data[i][1];
+          poitList.push({
+            x, y
+          });
+      };
       let styleobj = {
-        height: this.type === 'Oversized' ? 600 : 500,
-        width: this.type === 'Oversized' ? 500: 500
+        height: typeStyleObj[this.type],
+        width: typeStyleObj[this.type]
        };
       return (
-        <div style="overflow: hidden;">
-          <div style={{
-            'marginLeft': '-100px',
-            'marginTop': '-100px'
+        <div class={{
+          "canton": true,
+          [`canton-${this.type}`]: true
           }}>
+          <div class="psvg" >
             <svg height={styleobj.height} width={styleobj.width}>
               {
                 mapList.map((item, index) => {
@@ -118,10 +160,22 @@
                   )
                 })
               }
+              {
+                poitList.map(item => {
+                  return (
+                    <circle cx={item.x} cy={item.y} r="3" stroke="green" stroke-width="1" fill="yellow" />
+                  )
+                })
+              }
             </svg>
-            <el-button onClick={() => {
-            }}>点击</el-button>
+            <footer>
+              sfsfds
+            </footer>
           </div>
+          <el-button onClick={() => {
+            this.dataList6 = this.dataList9;
+            // this.$forceUpdate()
+          }}>点击</el-button>
         </div>
       )
     },

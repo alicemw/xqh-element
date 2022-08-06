@@ -1,6 +1,38 @@
 @import "mixins/mixins";
 @import "progress";
 @import "common/var";
-.title {
-  color: red;
+$marginminiATop: -50px;
+$margininitATop: -80px;
+$marginbigTop: -111px;
+$marginOversizedTop: -150px;
+$marginATop: -111px;
+
+.canton {
+  overflow: hidden;
+}
+.canton-Oversized {
+  & > .psvg {
+    margin-top: $marginOversizedTop;
+  }
+}
+.canton-big {
+  & > .psvg {
+    margin-top: $marginbigTop;
+  }
+}
+.canton-mini {
+  & > .psvg {
+    margin-top: $marginminiATop;
+  }
+}
+.canton-init {
+  & > .psvg {
+    margin-top: $margininitATop;
+  }
+}
+.psvg {
+  & > footer {
+    // text-align: center;
+    margin-left: 150px;
+  }
 }
