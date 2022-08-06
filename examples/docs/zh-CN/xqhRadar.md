@@ -43,6 +43,21 @@
             name: '持续发展',
             max: 100
           },
+          // {
+          //   code: 'structure',
+          //   name: '股权结构',
+          //   max: 100
+          // },
+          // {
+          //   code: 'governance',
+          //   name: '公司治理',
+          //   max: 100
+          // },
+          // {
+          //   code: 'development',
+          //   name: '持续发展',
+          //   max: 100
+          // },
       ]
     },
     series: [
@@ -52,7 +67,7 @@
         data: [
           {
             code: 'technology',
-            value: 234,
+            value: 65,
           },
           {
             code: 'situation',
@@ -79,14 +94,6 @@
         color: '#ecaa42',
         width: 3
       },
-      // {
-      //   name: '企业得分',
-      //   type: 'qi',
-      //   data: [10, 40, 50, 82, 82, 90],
-      //   full: true,
-      //   color: '#1051B5',
-      //   opacity: .5
-      // },
       {
         name: '企业得分',
         type: 'qi',
@@ -99,8 +106,24 @@
             code: 'development',
             value: 60,
           },
+          {
+            code: 'operation',
+            value: 90,
+          },
+          {
+            code: 'structure',
+            value: 43,
+          },
+          {
+            code: 'governance',
+            value: 43,
+          },
+          {
+            code: 'development',
+            value: 23,
+          },
         ],
-        width: 3,
+        width: 2,
         full: true,
         color: '#1051B5',
         opacity: .5

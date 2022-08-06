@@ -2,7 +2,6 @@
 
 <script type="text/babel">
 /* eslint-disable */
-import { deepClone } from '@/utils/util';
 
   const bgArr = [
     '#e5ebf8',
@@ -24,7 +23,13 @@ import { deepClone } from '@/utils/util';
     'big': 500,
     'Oversized': 600
   }
-  
+  const rotatePoint = (point, angle, originPoint = {x: 0, y: 0}) => {
+      const cosA = Math.cos(angle * Math.PI);
+      const sinA = Math.sin(angle * Math.PI);
+      const rx = originPoint.x + (point.x - originPoint.x) * cosA - (point.y - originPoint.y) * sinA;
+      const ry = originPoint.y + (point.x - originPoint.x) * sinA - (point.y - originPoint.y) * cosA;
+      return { x: rx,y: ry };
+  }
   export default {
     name: 'xqhRadar',
     data() {
@@ -61,20 +66,23 @@ import { deepClone } from '@/utils/util';
       },
     },
     render() {
-      const { legend } = this.options;
-      let { data } = legend;
+      const { legend = {} } = this.options;
+      let { data = [] } = legend;
       let step = data.length;
+      if(step === 0) return;
       let r = this.defaultXY;
       let mapList = [];
       for(let s = this.s; s > 0; s--) {
         let item = '';
+        let othder = ''
         for(let i = 0;i < step;i++) {
-            let rad = 2 * Math.PI/step * i;
-            let x = r + Math.sin(rad) * r * (s / 10);
-            let y = r + Math.cos(rad) * r * (s / 10);
+            let rad = 2 * Math.PI / step * i;
+            let x0 = r + Math.sin(rad) * r * (s / 10);
+            let y0 = r + Math.cos(rad) * r * (s / 10);
+            const { x, y } = rotatePoint({x: x0, y: y0}, 180, {x: r, y: r});
             item += `${x},${y} `;
         };
-        mapList.push(item)
+        mapList.push(item + othder)
       };
       let lineList = [];
       let borderList = [];
@@ -106,7 +114,6 @@ import { deepClone } from '@/utils/util';
           }
         };
       };
-      
       let styleobj = {
         height: typeStyleObj[this.type],
         width: typeStyleObj[this.type]
@@ -114,11 +121,10 @@ import { deepClone } from '@/utils/util';
       let poitList = [];
       let linePoiList = [];
       try {
-        const { series } = this.options;
-        if(!series || series.length === 0) return;
+        const { series = [] } = this.options;
         const legendObj = this.legendObj;
         series.forEach(item => {
-          const { full = false, color, data, width, opacity } = item;
+          const { full = false, color, data = [], width, opacity } = item;
           let points = '';
           data.forEach((element, i) => {
             const { code, value } = element;
@@ -127,8 +133,9 @@ import { deepClone } from '@/utils/util';
             if(proportion) {
               proportion = proportion > 1 ? 1 : proportion;
               const rad = 2 * Math.PI/step * i;
-              const x = r + Math.sin(rad) * r * 0.5 * proportion;
-              const y = r + Math.cos(rad) * r * 0.5 * proportion;
+              const x0 = r + Math.sin(rad) * r * 0.5 * proportion;
+              const y0 = r + Math.cos(rad) * r * 0.5 * proportion;
+              const { x, y } = rotatePoint({x: x0, y: y0}, 180, {x: r, y: r});
               points += `${x},${y} `
             };
           });
@@ -217,6 +224,14 @@ import { deepClone } from '@/utils/util';
                   return (
                     <line x1={x} y1={y} x2={defaultXY} y2={defaultXY}
                     style={style}/>
+                  )
+                })
+              }
+              { 
+                mapList[0].split(' ').map((item, i) => {
+                  const [x, y] = item.split(',');
+                  return (
+                    <text x={x} y={y}>{i}</text>
                   )
                 })
               }
