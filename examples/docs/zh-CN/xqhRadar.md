@@ -63,7 +63,6 @@
     series: [
       {
         name: '行业均值',
-        type: 'bar',
         data: [
           {
             code: 'structure',
@@ -104,11 +103,10 @@
         ],
         full: false,
         color: '#ecaa42',
-        width: 5
+        borderWidth: 5
       },
       {
         name: '企业得分',
-        type: 'qi',
         data: [
           {
             code: 'structure',
@@ -147,7 +145,7 @@
             value: 64,
           },
         ],
-        width: 2,
+        borderWidth: 2,
         full: true,
         color: '#1051B5',
         opacity: .5

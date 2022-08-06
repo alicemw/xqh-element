@@ -155,7 +155,7 @@
       try {
         const legendObj = this.legendObj;
         series.forEach(item => {
-          const { full = false, color, data = [], width, opacity } = item;
+          const { full = false, color, data = [], borderWidth, opacity } = item;
           let points = '';
           data.forEach((element, i) => {
             const { code, value } = element;
@@ -174,8 +174,8 @@
             ['fill-opacity']: full ? opacity : 0
           };
           if(color) style.stroke = color;
-          if(width) {
-            style['stroke-width'] = width
+          if(borderWidth) {
+            style['stroke-width'] = borderWidth
           };
           if(full) {
             style['fill'] = color;
