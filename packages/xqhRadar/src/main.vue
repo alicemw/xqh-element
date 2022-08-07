@@ -1,12 +1,8 @@
 
 
 <script type="text/babel">
+
 /* eslint-disable */
-// <animateTransform
-//     from={'400 400'}
-//     to={points}
-//     dur="10s"
-//     />
   const bgArr = [
     '#e5ebf8',
     '#d0d6ed',
@@ -136,22 +132,30 @@
         height: typeStyleObj[this.type],
         width: typeStyleObj[this.type]
       };
+      let poitList = [];
+      let linePoiList = [];
+      const series = this.handelSeries;
       const getTitle = () => {
         return legendData.map((item, i) => {
           const rad = 2 * Math.PI / step * i;
           const x0 = r + Math.sin(rad) * r * 0.5 * titleDistance;
           const y0 = r + Math.cos(rad) * r * 0.5 * titleDistance;
           const {x, y} = rotatePoint({x: x0, y: y0}, 180, {x: r, y: r});
+          const childs = series.map(iop => {
+            const { color, data } = iop;
+            return {
+              color,
+              value: data[i].value
+            }
+          });
           return {
             x: x - 40,
             y,
+            childs,
             ...item,
           }
         })
       }
-      let poitList = [];
-      let linePoiList = [];
-      const series = this.handelSeries;
       try {
         const legendObj = this.legendObj;
         series.forEach(item => {
@@ -212,7 +216,8 @@
                 mapList.map((item, index) => {
                   let style = {
                     fill: bgArr[index],
-                  }
+                  };
+                  if(index === 0) style.stroke = lineBg;
                   return (
                     <polygon points={item}
                     style={style}/>
@@ -228,11 +233,6 @@
                     style={`stroke: ${lineBg};`}/>
                   )
                 })
-              }
-              {
-                <polygon points={mapList[0]}
-                fill="none"
-                style={`stroke: ${lineBg};`}/>
               }
               {
                 poitList.map(item => {
@@ -257,9 +257,27 @@
               }
               { 
                 getTitle().map((item, i) => {
-                  const { x, y, name } = item
+                  const { x, y, name, childs } = item;
+                  let num = - 30;
                   return (
-                    <text x={x} y={y}>{name}</text>
+                    <g>
+                        <text x={x} y={y} font-size="16px">{name}</text>
+                        {
+                          childs.length > 0 && (
+                            childs.map((iuy, i) => {
+                              num += 30;
+                              return (
+                                <g>
+                                 <text x={x + num} y={y + 20} font-family="Microsoft YaHei-Regular, Microsoft YaHei" font-size="14px" font-weight="200" stroke={iuy.color}>{iuy.value}</text>
+                                 {
+                                    i !== childs.length - 1 && (<text x={x + num + 20} y={y + 20} font-size="14px" font-weight="600" stroke="#f8f5f9">|</text>)
+                                  }
+                                </g>
+                              )
+                            })
+                          )
+                        }
+                    </g>
                   )
                 })
               }

@@ -150,51 +150,51 @@
         color: '#1051B5',
         opacity: .5
       },
-      {
-        name: '百度',
-        data: [
-          {
-            code: 'structure',
-            value: '67',
-          },
-          {
-            code: 'governance',
-            value: 89,
-          },
-          {
-            code: 'development',
-            value: 53,
-          },
-          {
-            code: 'technology',
-            value: 23,
-          },
-          {
-            code: 'situation',
-            value: 90,
-          },
-          {
-            code: 'operation',
-            value: 45,
-          },
-          {
-            code: 'gfsaf',
-            value: 14,
-          },
-          {
-            code: 'ffsgsds',
-            value: 35,
-          },
-          {
-            code: 'fsdfs',
-            value: 64,
-          },
-        ],
-        borderWidth: 3,
-        full: false,
-        color: 'red',
-        opacity: .5
-      },
+      // {
+      //   name: '百度',
+      //   data: [
+      //     {
+      //       code: 'structure',
+      //       value: '67',
+      //     },
+      //     {
+      //       code: 'governance',
+      //       value: 89,
+      //     },
+      //     {
+      //       code: 'development',
+      //       value: 53,
+      //     },
+      //     {
+      //       code: 'technology',
+      //       value: 23,
+      //     },
+      //     {
+      //       code: 'situation',
+      //       value: 90,
+      //     },
+      //     {
+      //       code: 'operation',
+      //       value: 45,
+      //     },
+      //     {
+      //       code: 'gfsaf',
+      //       value: 14,
+      //     },
+      //     {
+      //       code: 'ffsgsds',
+      //       value: 35,
+      //     },
+      //     {
+      //       code: 'fsdfs',
+      //       value: 64,
+      //     },
+      //   ],
+      //   borderWidth: 3,
+      //   full: false,
+      //   color: 'red',
+      //   opacity: .5
+      // },
     ]
   };
   export default {
