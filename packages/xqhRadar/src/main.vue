@@ -25,7 +25,7 @@
     'mini': 300,
     'init': 400,
     'big': 500,
-    'Oversized': 800
+    'Oversized': 700
   }
   const rotatePoint = (point, angle, originPoint = {x: 0, y: 0}) => {
       const cosA = Math.cos(angle * Math.PI);
@@ -195,10 +195,9 @@
                 style
               }
             });
-            linePoiList = [ ...linePoiList, ...mapLine ]
+            linePoiList = [ ...linePoiList, ...mapLine ];
           }
         })
-        console.log(linePoiList, poitList, 'poitList')
       } catch(e) {
         console.log(e)
       };
@@ -235,7 +234,6 @@
                 fill="none"
                 style={`stroke: ${lineBg};`}/>
               }
-              
               {
                 poitList.map(item => {
                   const { points, style } = item;

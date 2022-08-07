@@ -32,12 +32,27 @@ $marginATop: -111px;
 }
 .psvg {
   & > footer {
-    width: 380px;
+    // width: 380px;
     padding: 50px 20px 0 20px;
-    margin-left: 200px;
+    display: flex;
+    justify-content: center;
+    // margin-left: 200px;
     display: flex;
     & > div:not(:first-child) {
       margin-left: 45px;
     }
+  }
+}
+svg polygon {
+  animation: polygon-fade-in .3s;
+}
+@keyframes polygon-fade-in {
+  0% {
+    transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
   }
 }
