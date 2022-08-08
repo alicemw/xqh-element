@@ -13,7 +13,6 @@
 <script>
   const options = {
     legend: [
-      
       {
         code: 'structure',
         name: '股权结构',
@@ -45,21 +44,21 @@
         name: '财务状况',
         max: 100
       },
-      // {
-      //   code: 'operation',
-      //   name: '业务经营',
-      //   max: 100
-      // },
-      // {
-      //   code: 'fsdfs',
-      //   name: '技术影响力',
-      //   max: 100
-      // },
-      // {
-      //   code: 'development',
-      //   name: '持续发展',
-      //   max: 100
-      // },
+      {
+        code: 'operation',
+        name: '业务经营',
+        max: 100
+      },
+      {
+        code: 'fsdfs',
+        name: '技术影响力',
+        max: 100
+      },
+      {
+        code: 'development',
+        name: '持续发展',
+        max: 100
+      },
     ],
     series: [
       {
@@ -210,7 +209,7 @@
         let { series } = this.options;
         series.forEach(element => {
           element.data.forEach(item => {
-            item.value = Math.ceil(Math.random()*100);
+            item.value = Math.ceil(Math.random() * 100);
           })
         });
         this.options.series = series;

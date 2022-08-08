@@ -39,6 +39,7 @@
         mapList: [],
         poitList: [],
         linePoiList: [],
+        initPoilt: ''
       }
     },
     props: {
@@ -116,6 +117,7 @@
           mapList.push(item)
         };
         this.mapList = mapList;
+        this.initPoilt = mapList[mapList.length - 1];
         let lineList = [];
         const mapOneArr = mapList[0].split(' ') || [];
         let len = mapOneArr.length;
@@ -160,7 +162,7 @@
           }
         })
       },
-      getPoitList(returnPOi = false) {
+      getInitPoit() {
         const series = this.handelSeries;
         let poitList = [];
         let linePoiList = [];
@@ -214,15 +216,18 @@
               linePoiList = [ ...linePoiList, ...mapLine ];
             };
           });
-          if(returnPOi) return [poitList, linePoiList];
-            this.poitList = poitList;
-            this.linePoiList = linePoiList;
+          return [poitList, linePoiList];
         } catch(e) {
-          console.log(e)
+          return [[], []];
         };
       },
+      getPoitList() {
+          const [poitList, linePoiList] = this.getInitPoit();
+          this.poitList = poitList;
+          this.linePoiList = linePoiList;
+      },
       updateView() {
-        const [poitList, linePoiList] = this.getPoitList(true);
+        const [poitList, linePoiList] = this.getInitPoit();
         if(poitList.length !== this.poitList.length) {
           this.poitList = poitList;
           this.linePoiList = linePoiList;
@@ -281,9 +286,9 @@
                     <animate 
                     attributeName="points"
                     id={`animation-to-check${i}`}
-                    from={from ? from : "400.00000000000034,360 425.7115043874618,369.3582222752407 439.3923101204884,393.0540728933225 434.64101615137736,419.9999999999997 413.6808057330265,437.5877048314362 386.31919426697294,437.58770483143644 365.3589838486223,420.0000000000003 360.6076898795117,393.0540728933231 374.28849561253867,369.35822227524113 "}
+                    from={from ? from : this.initPoilt}
                     to={points}
-                    dur=".5s" 
+                    dur=".3s" 
                     repeatCount="1"
                     ></animate>
                     </polygon>
