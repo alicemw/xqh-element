@@ -1,7 +1,6 @@
 
 
 <script type="text/babel">
-
 /* eslint-disable */
   const bgArr = [
     '#e5ebf8',
@@ -13,14 +12,14 @@
   const lineBg = '#8699cc';
   const typeobj = {
     'mini': 200,
-    'init': 250,
+    'init': 300,
     'big': 300,
     'Oversized': 400
   };
   const typeStyleObj = {
     'mini': 300,
     'init': 400,
-    'big': 500,
+    'big': 600,
     'Oversized': 700
   }
   const rotatePoint = (point, angle, originPoint = {x: 0, y: 0}) => {
@@ -134,7 +133,7 @@
         this.lineList = lineList;
         this.getPoitList();
       },
-      getTitle () {
+      getTitle() {
         const series = this.handelSeries;
         if(!series || series.length === 0) return false;
         let r = this.defaultXY;
@@ -189,11 +188,11 @@
               };
             });
             let style = {
-              ['fill-opacity']: full ? opacity : 0
+              ['fill-opacity']: full ? opacity : 0,
+              stroke: color
             };
-            if(color) style.stroke = color;
             if(borderWidth) {
-              style['stroke-width'] = borderWidth
+              style['stroke-width'] = borderWidth;
             };
             if(full) {
               style['fill'] = color;
@@ -252,7 +251,11 @@
           "canton": true,
           [`canton-${this.type}`]: true
           }}>
-          <div class="psvg" >
+          <div
+            class={{
+              'psvg': true
+            }}
+          >
             <svg height={styleobj.height} width={styleobj.width}>
               {
                 this.mapList.map((item, index) => {
