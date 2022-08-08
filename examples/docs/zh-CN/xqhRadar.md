@@ -4,62 +4,63 @@
 
 ### 基础用法
 
-:::demo 要使用它，只需要在`el-input-number`元素中使用`v-model`绑定变量即可，变量的初始值即为默认值。
+:::demo。
 ```html
 <template>
-    <xqh-radar :options="options"></xqh-radar>
+    <xqh-radar ref="xqhradar" :options="options"></xqh-radar>
+    <el-button @click="update">点击更新数据</el-button>
 </template>
 <script>
   const options = {
-    legend: {
-      data: [
-        {
-          code: 'technology',
-          name: '核心科技',
-          max: 100
-        },
-        {
-          code: 'structure',
-          name: '股权结构',
-          max: 100
-        },
-        {
-          code: 'governance',
-          name: '公司治理',
-          max: 100
-        },
-        {
-          code: 'development',
-          name: '持续发展',
-          max: 100
-        },
-        {
-          code: 'situation',
-          name: '财务状况',
-          max: 100
-        },
-        {
-          code: 'operation',
-          name: '业务经营',
-          max: 100
-        },
-        {
-          code: 'gfsaf',
-          name: '对外延伸',
-          max: 100
-        },
-        {
-          code: 'ffsgsds',
-          name: '技术生命力',
-          max: 100
-        },
-        {
-          code: 'fsdfs',
-          name: '技术影响力',
-          max: 100
-        },
-      ]
-    },
+    legend: [
+      
+      {
+        code: 'structure',
+        name: '股权结构',
+        max: 100
+      },
+      
+      {
+        code: 'governance',
+        name: '公司治理',
+        max: 100
+      },
+      {
+        code: 'technology',
+        name: '核心科技',
+        max: 100
+      },
+      {
+        code: 'gfsaf',
+        name: '对外延伸',
+        max: 100
+      },
+      {
+        code: 'ffsgsds',
+        name: '技术生命力',
+        max: 100
+      },
+      {
+        code: 'situation',
+        name: '财务状况',
+        max: 100
+      },
+      // {
+      //   code: 'operation',
+      //   name: '业务经营',
+      //   max: 100
+      // },
+      // {
+      //   code: 'fsdfs',
+      //   name: '技术影响力',
+      //   max: 100
+      // },
+      // {
+      //   code: 'development',
+      //   name: '持续发展',
+      //   max: 100
+      // },
+    ],
     series: [
       {
         name: '行业均值',
@@ -103,7 +104,7 @@
         ],
         full: false,
         color: '#ecaa42',
-        borderWidth: 5
+        borderWidth: 3
       },
       {
         name: '企业得分',
@@ -148,53 +149,53 @@
         borderWidth: 2,
         full: true,
         color: '#1051B5',
+        opacity: .6
+      },
+      {
+        name: '百度',
+        data: [
+          {
+            code: 'structure',
+            value: '67',
+          },
+          {
+            code: 'governance',
+            value: 89,
+          },
+          {
+            code: 'development',
+            value: 82,
+          },
+          {
+            code: 'technology',
+            value: 89,
+          },
+          {
+            code: 'situation',
+            value: 80,
+          },
+          {
+            code: 'operation',
+            value: 45,
+          },
+          {
+            code: 'gfsaf',
+            value: 87,
+          },
+          {
+            code: 'ffsgsds',
+            value: 35,
+          },
+          {
+            code: 'fsdfs',
+            value: 64,
+          },
+        ],
+        borderWidth: 3,
+        full: false,
+        color: 'red',
         opacity: .5
       },
-      // {
-      //   name: '百度',
-      //   data: [
-      //     {
-      //       code: 'structure',
-      //       value: '67',
-      //     },
-      //     {
-      //       code: 'governance',
-      //       value: 89,
-      //     },
-      //     {
-      //       code: 'development',
-      //       value: 53,
-      //     },
-      //     {
-      //       code: 'technology',
-      //       value: 23,
-      //     },
-      //     {
-      //       code: 'situation',
-      //       value: 90,
-      //     },
-      //     {
-      //       code: 'operation',
-      //       value: 45,
-      //     },
-      //     {
-      //       code: 'gfsaf',
-      //       value: 14,
-      //     },
-      //     {
-      //       code: 'ffsgsds',
-      //       value: 35,
-      //     },
-      //     {
-      //       code: 'fsdfs',
-      //       value: 64,
-      //     },
-      //   ],
-      //   borderWidth: 3,
-      //   full: false,
-      //   color: 'red',
-      //   opacity: .5
-      // },
     ]
   };
   export default {
@@ -205,17 +206,16 @@
       };
     },
     methods: {
-
-    },
-    mounted() {
-      //Math.ceil(Math.random()*10)
-      // setInterval(() => {
-      //   this.options.series.forEach(element => {
-      //     element.data.forEach(item => {
-      //       item.value = Math.ceil(Math.random()*100);
-      //     })
-      //   });
-      // }, 3000);
+      update() {
+        let { series } = this.options;
+        series.forEach(element => {
+          element.data.forEach(item => {
+            item.value = Math.ceil(Math.random()*100);
+          })
+        });
+        this.options.series = series;
+        this.$refs['xqhradar'].updateView();
+      }
     },
   };
 </script>
