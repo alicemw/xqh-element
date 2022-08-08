@@ -12,6 +12,9 @@
 </template>
 <script>
   const options = {
+    footerSty: {
+      marginLeft: '20px'
+    },
     legend: [
       {
         code: 'structure',
@@ -126,7 +129,7 @@
           },
           {
             code: 'situation',
-            value: 90,
+            value: 85.5,
           },
           {
             code: 'operation',

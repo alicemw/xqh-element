@@ -239,7 +239,7 @@ export function objToArray(obj) {
   }
   return isEmpty(obj) ? [] : [obj];
 }
-
+/* eslint-disable */
 export function deepClone(sourceObj) {
   if (!sourceObj && typeof sourceObj !== 'object') {
     throw new Error('this is not object or sourceObj is empty');
@@ -253,4 +253,23 @@ export function deepClone(sourceObj) {
     };
   });
   return targetObj;
+};
+
+export function fillingZero(val, num = 1) {
+  if(!val || isNaN(val)) return '-';
+  let str = '' + val;
+  const [h, l] = str.split('.');
+  if(!l) {
+    let o = '.'
+    for(let i = 0;i < num;i ++) {
+      o += '0'
+    };
+    str += o;
+  };
+  if(h && h.length < num) {
+    for(let i = h.length;i < num;i ++) {
+      str += '0'
+    };
+  };
+  return str;
 }
