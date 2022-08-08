@@ -153,51 +153,6 @@
         color: '#1051B5',
         opacity: .6
       },
-      // {
-      //   name: '百度',
-      //   data: [
-      //     {
-      //       code: 'structure',
-      //       value: '67',
-      //     },
-      //     {
-      //       code: 'governance',
-      //       value: 89,
-      //     },
-      //     {
-      //       code: 'development',
-      //       value: 82,
-      //     },
-      //     {
-      //       code: 'technology',
-      //       value: 89,
-      //     },
-      //     {
-      //       code: 'situation',
-      //       value: 80,
-      //     },
-      //     {
-      //       code: 'operation',
-      //       value: 45,
-      //     },
-      //     {
-      //       code: 'gfsaf',
-      //       value: 87,
-      //     },
-      //     {
-      //       code: 'ffsgsds',
-      //       value: 35,
-      //     },
-      //     {
-      //       code: 'fsdfs',
-      //       value: 64,
-      //     },
-      //   ],
-      //   borderWidth: 3,
-      //   full: false,
-      //   color: 'red',
-      //   opacity: .5
-      // },
     ]
   };
   export default {
