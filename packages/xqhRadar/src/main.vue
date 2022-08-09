@@ -231,7 +231,8 @@
             const { style } = item;
             const { points } = this.poitList.find(iop => iop.style.stroke === style.stroke);
             item.from = points;
-            document.getElementById(`animation-to-check${i}`).beginElement();
+            let animationCheck = document.getElementById(`animation-to-check${i}`);
+            if(animationCheck) animationCheck.beginElement();
           });
           this.poitList = poitList;
         };
