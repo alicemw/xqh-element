@@ -1,6 +1,6 @@
 $marginminiATop: -50px;
 $margininitATop: -80px;
-$marginbigTop: -111px;
+$marginbigTop: -90px;
 $marginOversizedTop: -150px;
 $marginATop: -111px;
 
@@ -8,28 +8,14 @@ $marginATop: -111px;
   overflow: hidden;
 }
 .canton-Oversized {
-  & > .psvg {
-    // margin-top: $marginOversizedTop;
-  }
+  width: 700px !important;
 }
 .canton-big {
-  & > .psvg {
-    margin-top: $marginbigTop;
-  }
-}
-.canton-mini {
-  & > .psvg {
-    margin-top: $marginminiATop;
-  }
-}
-.canton-init {
-  & > .psvg {
-    margin-top: $margininitATop;
-  }
+  width: 600px !important;
 }
 .psvg {
   & > footer {
-    padding: 50px 20px 0 20px;
+    padding: 30px 0 0 20px;
     display: flex;
     justify-content: center;
     display: flex;

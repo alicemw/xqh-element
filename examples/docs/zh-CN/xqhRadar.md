@@ -7,13 +7,15 @@
 :::demo。
 ```html
 <template>
-    <xqh-radar ref="xqhradar" :options="options"></xqh-radar>
+    <xqh-radar ref="xqhradar" :options="options" type="Oversized"></xqh-radar>
     <el-button @click="update">点击更新数据</el-button>
 </template>
 <script>
   const options = {
+    footerSty: {
+      marginLeft: '20px'
+    },
     legend: [
-      
       {
         code: 'structure',
         name: '股权结构',
@@ -45,21 +47,21 @@
         name: '财务状况',
         max: 100
       },
-      // {
-      //   code: 'operation',
-      //   name: '业务经营',
-      //   max: 100
-      // },
-      // {
-      //   code: 'fsdfs',
-      //   name: '技术影响力',
-      //   max: 100
-      // },
-      // {
-      //   code: 'development',
-      //   name: '持续发展',
-      //   max: 100
-      // },
+      {
+        code: 'operation',
+        name: '业务经营',
+        max: 100
+      },
+      {
+        code: 'fsdfs',
+        name: '技术影响力',
+        max: 100
+      },
+      {
+        code: 'development',
+        name: '持续发展',
+        max: 100
+      },
     ],
     series: [
       {
@@ -127,7 +129,7 @@
           },
           {
             code: 'situation',
-            value: 90,
+            value: 85.5,
           },
           {
             code: 'operation',
@@ -151,51 +153,6 @@
         color: '#1051B5',
         opacity: .6
       },
-      {
-        name: '百度',
-        data: [
-          {
-            code: 'structure',
-            value: '67',
-          },
-          {
-            code: 'governance',
-            value: 89,
-          },
-          {
-            code: 'development',
-            value: 82,
-          },
-          {
-            code: 'technology',
-            value: 89,
-          },
-          {
-            code: 'situation',
-            value: 80,
-          },
-          {
-            code: 'operation',
-            value: 45,
-          },
-          {
-            code: 'gfsaf',
-            value: 87,
-          },
-          {
-            code: 'ffsgsds',
-            value: 35,
-          },
-          {
-            code: 'fsdfs',
-            value: 64,
-          },
-        ],
-        borderWidth: 3,
-        full: false,
-        color: 'red',
-        opacity: .5
-      },
     ]
   };
   export default {
@@ -210,7 +167,7 @@
         let { series } = this.options;
         series.forEach(element => {
           element.data.forEach(item => {
-            item.value = Math.ceil(Math.random()*100);
+            item.value = Math.ceil(Math.random() * 100);
           })
         });
         this.options.series = series;

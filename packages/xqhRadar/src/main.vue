@@ -1,8 +1,8 @@
 
 
 <script type="text/babel">
-
 /* eslint-disable */
+import { fillingZero } from '@/utils/util';
   const bgArr = [
     '#e5ebf8',
     '#d0d6ed',
@@ -13,14 +13,14 @@
   const lineBg = '#8699cc';
   const typeobj = {
     'mini': 200,
-    'init': 250,
+    'init': 300,
     'big': 300,
     'Oversized': 400
   };
   const typeStyleObj = {
     'mini': 300,
     'init': 400,
-    'big': 500,
+    'big': 600,
     'Oversized': 700
   }
   const rotatePoint = (point, angle, originPoint = {x: 0, y: 0}) => {
@@ -39,6 +39,7 @@
         mapList: [],
         poitList: [],
         linePoiList: [],
+        initPoilt: ''
       }
     },
     props: {
@@ -64,6 +65,34 @@
           if(!obj[item.code]) obj[item.code] = item;
         });
         return obj;
+      },
+      getTitle() {
+        const series = this.handelSeries;
+        if(!series || series.length === 0) return false;
+        let r = this.defaultXY;
+        const titleDistance = 1.3;
+        const { legend = {} } = this.options;
+        const legendData = legend;
+        let step = legendData.length;
+        return legendData.map((item, i) => {
+          const rad = 2 * Math.PI / step * i;
+          const x0 = r + Math.sin(rad) * r * 0.5 * titleDistance;
+          const y0 = r + Math.cos(rad) * r * 0.5 * titleDistance;
+          const {x, y} = rotatePoint({x: x0, y: y0}, 180, {x: r, y: r});
+          const childs = series.map(iop => {
+            const { color, data } = iop;
+            return {
+              color,
+              value: data[i].value
+            }
+          });
+          return {
+            x: x - 40,
+            y,
+            childs,
+            ...item,
+          }
+        })
       },
       handelSeries() {
         const findItem = (arr, code) => {
@@ -116,6 +145,7 @@
           mapList.push(item)
         };
         this.mapList = mapList;
+        this.initPoilt = mapList[mapList.length - 1];
         let lineList = [];
         const mapOneArr = mapList[0].split(' ') || [];
         let len = mapOneArr.length;
@@ -132,35 +162,7 @@
         this.lineList = lineList;
         this.getPoitList();
       },
-      getTitle () {
-        const series = this.handelSeries;
-        if(!series || series.length === 0) return false;
-        let r = this.defaultXY;
-        const titleDistance = 1.3;
-        const { legend = {} } = this.options;
-        const legendData = legend;
-        let step = legendData.length;
-        return legendData.map((item, i) => {
-          const rad = 2 * Math.PI / step * i;
-          const x0 = r + Math.sin(rad) * r * 0.5 * titleDistance;
-          const y0 = r + Math.cos(rad) * r * 0.5 * titleDistance;
-          const {x, y} = rotatePoint({x: x0, y: y0}, 180, {x: r, y: r});
-          const childs = series.map(iop => {
-            const { color, data } = iop;
-            return {
-              color,
-              value: data[i].value
-            }
-          });
-          return {
-            x: x - 40,
-            y,
-            childs,
-            ...item,
-          }
-        })
-      },
-      getPoitList(returnPOi = false) {
+      getInitPoit() {
         const series = this.handelSeries;
         let poitList = [];
         let linePoiList = [];
@@ -187,11 +189,11 @@
               };
             });
             let style = {
-              ['fill-opacity']: full ? opacity : 0
+              ['fill-opacity']: full ? opacity : 0,
+              stroke: color
             };
-            if(color) style.stroke = color;
             if(borderWidth) {
-              style['stroke-width'] = borderWidth
+              style['stroke-width'] = borderWidth;
             };
             if(full) {
               style['fill'] = color;
@@ -214,15 +216,18 @@
               linePoiList = [ ...linePoiList, ...mapLine ];
             };
           });
-          if(returnPOi) return [poitList, linePoiList];
-            this.poitList = poitList;
-            this.linePoiList = linePoiList;
+          return [poitList, linePoiList];
         } catch(e) {
-          console.log(e)
+          return [[], []];
         };
       },
+      getPoitList() {
+          const [poitList, linePoiList] = this.getInitPoit();
+          this.poitList = poitList;
+          this.linePoiList = linePoiList;
+      },
       updateView() {
-        const [poitList, linePoiList] = this.getPoitList(true);
+        const [poitList, linePoiList] = this.getInitPoit();
         if(poitList.length !== this.poitList.length) {
           this.poitList = poitList;
           this.linePoiList = linePoiList;
@@ -243,12 +248,17 @@
         height: typeStyleObj[this.type],
         width: typeStyleObj[this.type]
       };
+      const { footerSty } = this.options;
       return (
         <div class={{
           "canton": true,
           [`canton-${this.type}`]: true
           }}>
-          <div class="psvg" >
+          <div
+            class={{
+              'psvg': true
+            }}
+          >
             <svg height={styleobj.height} width={styleobj.width}>
               {
                 this.mapList.map((item, index) => {
@@ -282,9 +292,9 @@
                     <animate 
                     attributeName="points"
                     id={`animation-to-check${i}`}
-                    from={from ? from : "400.00000000000034,360 425.7115043874618,369.3582222752407 439.3923101204884,393.0540728933225 434.64101615137736,419.9999999999997 413.6808057330265,437.5877048314362 386.31919426697294,437.58770483143644 365.3589838486223,420.0000000000003 360.6076898795117,393.0540728933231 374.28849561253867,369.35822227524113 "}
+                    from={from ? from : this.initPoilt}
                     to={points}
-                    dur=".5s" 
+                    dur=".3s" 
                     repeatCount="1"
                     ></animate>
                     </polygon>
@@ -302,7 +312,7 @@
                 })
               }
               { 
-                this.getTitle() && ( this.getTitle().map(item => {
+                this.getTitle && ( this.getTitle.map(item => {
                   const { x, y, name, childs } = item;
                   let num = - 30;
                   return (
@@ -312,23 +322,24 @@
                           childs.length > 0 && (
                             childs.map((iuy, i) => {
                               num += 30;
+                              const { value, color } = iuy;
                               return (
                                 <g>
                                  <text 
-                                  x={x + num} 
+                                  x={x + num * 1.2} 
                                   y={y + 20} 
                                   font-family="Microsoft YaHei-Regular, Microsoft YaHei" 
                                   font-size="14px" 
                                   font-weight="200" 
-                                  stroke={iuy.color}
+                                  stroke={color}
                                   >
-                                  {iuy.value}
+                                  {!isNaN(value) ? fillingZero(value) : '--'}
                                   </text>
                                 {
                                   i !== childs.length - 1 && (
                                     <text 
-                                      x={x + num + 20} 
-                                      y={y + 20} 
+                                      x={x + num + 30}
+                                      y={y + 20}
                                       font-size="14px" 
                                       font-weight="600" 
                                       stroke="#f8f5f9"
@@ -347,7 +358,7 @@
                 }))
               }
             </svg>
-            <footer>
+            <footer style={footerSty ? footerSty : {}}>
               {
                 this.handelSeries.map(item => {
                   const { full, name, color } = item;
