@@ -7,7 +7,7 @@
 :::demo。
 ```html
 <template>
-    <xqh-radar ref="xqhradar" :options="options" type="Oversized"></xqh-radar>
+    <el-xqh-radar ref="xqhradar" :options="options" type="Oversized"></el-xqh-radar>
     <el-button @click="update">点击更新数据</el-button>
 </template>
 <script>

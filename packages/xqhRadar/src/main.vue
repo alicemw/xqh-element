@@ -1,5 +1,3 @@
-
-
 <script type="text/babel">
 /* eslint-disable */
 import { fillingZero } from '@/utils/util';
@@ -31,7 +29,7 @@ import { fillingZero } from '@/utils/util';
       return { x: rx,y: ry };
   };
   export default {
-    name: 'xqhRadar',
+    name: 'ElXqhRadar',
     data() {
       return {
         defaultXY: typeobj[this.type],
@@ -248,12 +246,14 @@ import { fillingZero } from '@/utils/util';
         height: typeStyleObj[this.type],
         width: typeStyleObj[this.type]
       };
-      const { footerSty } = this.options;
+      const { footerSty = {}, cantonStyle = {} } = this.options;
       return (
         <div class={{
           "canton": true,
           [`canton-${this.type}`]: true
-          }}>
+          }}
+          style={cantonStyle}
+          >
           <div
             class={{
               'psvg': true
@@ -290,13 +290,13 @@ import { fillingZero } from '@/utils/util';
                     points={points}
                     style={style}>
                     <animate 
-                    attributeName="points"
-                    id={`animation-to-check${i}`}
-                    from={from ? from : this.initPoilt}
-                    to={points}
-                    dur=".3s" 
-                    repeatCount="1"
-                    ></animate>
+                      attributeName="points"
+                      id={`animation-to-check${i}`}
+                      from={from ? from : this.initPoilt}
+                      to={points}
+                      dur=".3s" 
+                      repeatCount="1"
+                      ></animate>
                     </polygon>
                   )
                 }))
@@ -358,7 +358,7 @@ import { fillingZero } from '@/utils/util';
                 }))
               }
             </svg>
-            <footer style={footerSty ? footerSty : {}}>
+            <footer style={footerSty}>
               {
                 this.handelSeries.map(item => {
                   const { full, name, color } = item;
