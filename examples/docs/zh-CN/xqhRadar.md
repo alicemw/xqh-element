@@ -7,8 +7,18 @@
 :::demo。
 ```html
 <template>
-    <el-xqh-radar ref="xqhradar" :options="options" type="Oversized"></el-xqh-radar>
-    <el-button @click="update">点击更新数据</el-button>
+  <div>
+    <div>
+      <el-xqh-radar ref="xqhradar" :options="options" type="Oversized"></el-xqh-radar>
+      <el-button @click="update">点击更新数据</el-button>
+    </div>
+    <div>
+      <el-button @click="update1">点击更新数据</el-button>
+      <el-xqh-radar ref="xqhradar9" :options="options1" type="Oversized"></el-xqh-radar>
+      
+    </div>
+  </div>
+    
 </template>
 <script>
   const options = {
@@ -155,24 +165,137 @@
       },
     ]
   };
+  const options1 = {
+    footerSty: {
+      marginLeft: '20px'
+    },
+    legend: [
+      {
+        code: 'structure',
+        name: '股权结构',
+        max: 100
+      },
+      
+      {
+        code: 'governance',
+        name: '公司治理',
+        max: 100
+      },
+      {
+        code: 'technology',
+        name: '核心科技',
+        max: 100
+      },
+      {
+        code: 'gfsaf',
+        name: '对外延伸',
+        max: 100
+      },
+      {
+        code: 'ffsgsds',
+        name: '技术生命力',
+        max: 100
+      },
+      {
+        code: 'situation',
+        name: '财务状况',
+        max: 100
+      },
+    ],
+    series: [
+      {
+        name: '行业均值',
+        data: [
+          {
+            code: 'structure',
+            value: '12',
+          },
+          {
+            code: 'governance',
+            value: 89,
+          },
+          {
+            code: 'development',
+            value: 60,
+          },
+          {
+            code: 'technology',
+            value: 65,
+          },
+          {
+            code: 'situation',
+            value: 90,
+          },
+          {
+            code: 'operation',
+            value: 45,
+          },
+        ],
+        full: false,
+        color: '#ecaa42',
+        borderWidth: 3
+      },
+      {
+        name: '企业得分',
+        data: [
+          {
+            code: 'structure',
+            value: '67',
+          },
+          {
+            code: 'governance',
+            value: 89,
+          },
+          {
+            code: 'development',
+            value: 53,
+          },
+          {
+            code: 'technology',
+            value: 23,
+          },
+          {
+            code: 'situation',
+            value: 85.5,
+          },
+          {
+            code: 'operation',
+            value: 45,
+          },
+        ],
+        borderWidth: 2,
+        full: true,
+        color: '#1051B5',
+        opacity: .6
+      },
+    ]
+  };
   export default {
     data() {
       return {
-        num: 1,
-        options
+        options,
+        options1
       };
     },
     methods: {
       update() {
-        let { series } = this.options;
+        const { series } = this.options;
         series.forEach(element => {
           element.data.forEach(item => {
             item.value = Math.ceil(Math.random() * 100);
           })
         });
-        this.options.series = series;
         this.$refs['xqhradar'].updateView();
-      }
+      },
+      update1() {
+        const { series } = this.options1;
+        series.forEach(element => {
+          element.data.forEach(item => {
+            item.value = Math.ceil(Math.random() * 100);
+          })
+        });
+        this.$refs['xqhradar9'].updateView();
+      },
     },
   };
 </script>

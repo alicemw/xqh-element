@@ -1,6 +1,6 @@
 <script type="text/babel">
 /* eslint-disable */
-import { fillingZero } from '@/utils/util';
+import { fillingZero, getmm } from '@/utils/util';
   const bgArr = [
     '#e5ebf8',
     '#d0d6ed',
@@ -37,7 +37,8 @@ import { fillingZero } from '@/utils/util';
         mapList: [],
         poitList: [],
         linePoiList: [],
-        initPoilt: ''
+        initPoilt: '',
+        getmm: ''
       }
     },
     props: {
@@ -50,6 +51,11 @@ import { fillingZero } from '@/utils/util';
       options: {
         default() {
           return {};
+        }
+      },
+      name: {
+        default() {
+          return 
         }
       }
     },
@@ -124,6 +130,11 @@ import { fillingZero } from '@/utils/util';
       }
     },
     methods: {
+      init() {
+        this.getmm = getmm();
+        console.log(this.getmm, 'getmm')
+        this.getBg();
+      },
       getBg() {
         const { legend = {} } = this.options;
         const legendData = legend;
@@ -225,6 +236,7 @@ import { fillingZero } from '@/utils/util';
           this.linePoiList = linePoiList;
       },
       updateView() {
+        let key = this.getmm;
         const [poitList, linePoiList] = this.getInitPoit();
         if(poitList.length !== this.poitList.length) {
           this.poitList = poitList;
@@ -234,7 +246,7 @@ import { fillingZero } from '@/utils/util';
             const { style } = item;
             const { points } = this.poitList.find(iop => iop.style.stroke === style.stroke);
             item.from = points;
-            let animationCheck = document.getElementById(`animation-to-check${i}`);
+            let animationCheck = document.getElementById(`animation-${key}${i}`);
             if(animationCheck) animationCheck.beginElement();
           });
           this.poitList = poitList;
@@ -242,6 +254,7 @@ import { fillingZero } from '@/utils/util';
       }
     },
     render() {
+      let key = this.getmm;
       let styleobj = {
         height: typeStyleObj[this.type],
         width: typeStyleObj[this.type]
@@ -291,7 +304,7 @@ import { fillingZero } from '@/utils/util';
                     style={style}>
                     <animate 
                       attributeName="points"
-                      id={`animation-to-check${i}`}
+                      id={`animation-${key}${i}`}
                       from={from ? from : this.initPoilt}
                       to={points}
                       dur=".3s" 
@@ -387,7 +400,7 @@ import { fillingZero } from '@/utils/util';
       )
     },
     created() {
-      this.getBg();
+      this.init();
     }
   };
 </script>
