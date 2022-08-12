@@ -183,13 +183,13 @@ import { fillingZero, getmm } from '@/utils/util';
         try {
           const legendObj = this.legendObj;
           series.forEach(item => {
-            const { full = false, color, data = [], borderWidth, opacity, linearGradient = [] } = item;
+            const { full = false, color, data = [], borderWidth = 1, opacity = 1, linearGradient = [] } = item;
             let points = '';
             data.forEach((element, i) => {
               const { code, value } = element;
               const { max } = legendObj[code];
               const rad = 2 * Math.PI / step * i;
-              let proportion = isNaN(+value) ? false : (value / max);
+              let proportion = isNaN(+value) ? false : (value / max).toFixed(2);
               if(proportion) {
                 proportion = proportion > 1 ? 1 : proportion;
                 const x0 = r + Math.sin(rad) * r * 0.5 * proportion;
@@ -207,6 +207,7 @@ import { fillingZero, getmm } from '@/utils/util';
             };
             if(full) {
               style['fill'] = color;
+              style['filter'] = "url(#feOffset)";
             };
             if((linearGradient instanceof Array) && linearGradient.length > 0) {
               let fullKey = getmm();
@@ -218,7 +219,6 @@ import { fillingZero, getmm } from '@/utils/util';
             }
             const poitLen = points.split(' ').filter(Boolean).length;
             if(points && poitLen === step) {
-              console.log('sd')
               poitList.push({
                 points,
                 style
@@ -310,7 +310,7 @@ import { fillingZero, getmm } from '@/utils/util';
               {
                 this.fillList.length > 0 && (
                     this.fillList.map(item => {
-                      const { id, stopList } = item
+                      const { id, stopList } = item;
                       return (
                         <defs>
                           <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
@@ -327,6 +327,13 @@ import { fillingZero, getmm } from '@/utils/util';
                     })
                 )
               }
+              <defs>
+                 <filter id="feOffset" x="0" y="0" width="200%" height="200%">
+                    <feOffset result="offOut" in="SourceAlpha" dx="4" dy="5" />
+                    <feGaussianBlur result="blurOut" in="offOut" stdDeviation="5" />
+                    <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+                  </filter>
+              </defs>
               {
                 this.poitList && this.poitList.length > 0 && (this.poitList.map((item, i) => {
                   const { points, style, from } = item;

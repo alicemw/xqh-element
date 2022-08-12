@@ -156,7 +156,7 @@
         full: true,
         linearGradient: ['#1051B5', '#0064FF'],
         color: '#1051B5',
-        opacity: .8
+        opacity: .5
       },
     ]
   };
