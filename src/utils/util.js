@@ -274,7 +274,7 @@ export function fillingZero(val, num = 1) {
   return str;
 }
 export function getmm(num=16) {
-  let amm = ["!", "@", "#", "$", "%", "&", "*", "<", "-", "_",1,2,3,4,5,6,7,8,9];
+  let amm = ['Q','W','E','R','T','Y','U','I','O','S','D','G','F','H','K','Z','X','B','N','M'];
   let tmp = Math.floor(Math.random() * num);
   let s = tmp;
   s = s + amm[tmp];
