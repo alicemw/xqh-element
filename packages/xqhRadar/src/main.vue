@@ -37,6 +37,7 @@ import { fillingZero, getmm } from '@/utils/util';
         mapList: [],
         poitList: [],
         linePoiList: [],
+        fillList: [],
         initPoilt: '',
         getmm: ''
       }
@@ -132,7 +133,6 @@ import { fillingZero, getmm } from '@/utils/util';
     methods: {
       init() {
         this.getmm = getmm();
-        console.log(this.getmm, 'getmm')
         this.getBg();
       },
       getBg() {
@@ -175,6 +175,7 @@ import { fillingZero, getmm } from '@/utils/util';
         const series = this.handelSeries;
         let poitList = [];
         let linePoiList = [];
+        let fillList = [];
         const { legend = {} } = this.options;
         const legendData = legend;
         const step = legendData.length;
@@ -182,7 +183,7 @@ import { fillingZero, getmm } from '@/utils/util';
         try {
           const legendObj = this.legendObj;
           series.forEach(item => {
-            const { full = false, color, data = [], borderWidth, opacity } = item;
+            const { full = false, color, data = [], borderWidth, opacity, linearGradient = [] } = item;
             let points = '';
             data.forEach((element, i) => {
               const { code, value } = element;
@@ -207,8 +208,17 @@ import { fillingZero, getmm } from '@/utils/util';
             if(full) {
               style['fill'] = color;
             };
+            if((linearGradient instanceof Array) && linearGradient.length > 0) {
+              let fullKey = getmm();
+              style['fill'] = `url(#${fullKey})`;
+              fillList.push({
+                stopList: linearGradient,
+                id: fullKey
+              })
+            }
             const poitLen = points.split(' ').filter(Boolean).length;
             if(points && poitLen === step) {
+              console.log('sd')
               poitList.push({
                 points,
                 style
@@ -225,8 +235,10 @@ import { fillingZero, getmm } from '@/utils/util';
               linePoiList = [ ...linePoiList, ...mapLine ];
             };
           });
+          this.fillList = fillList;
           return [poitList, linePoiList];
         } catch(e) {
+          console.log(e, 'catch')
           return [[], []];
         };
       },
@@ -286,7 +298,7 @@ import { fillingZero, getmm } from '@/utils/util';
                 })
               }
               {
-                this.lineList && this.lineList.length > 0 && (this.lineList.map(item => {
+                this.lineList.length > 0 && (this.lineList.map(item => {
                   const { x1, y1 } = item;
                   let defaultXY = this.defaultXY;
                   return (
@@ -296,12 +308,33 @@ import { fillingZero, getmm } from '@/utils/util';
                 }))
               }
               {
+                this.fillList.length > 0 && (
+                    this.fillList.map(item => {
+                      const { id, stopList } = item
+                      return (
+                        <defs>
+                          <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
+                            {
+                              stopList.map((iuy, i) => {
+                                return (
+                                  <stop offset={`${i * 100}%`} stop-color={iuy}/>
+                                )
+                              })
+                            }
+                          </linearGradient>
+                        </defs>
+                      )
+                    })
+                )
+              }
+              {
                 this.poitList && this.poitList.length > 0 && (this.poitList.map((item, i) => {
                   const { points, style, from } = item;
                   return (
                     <polygon
                     points={points}
-                    style={style}>
+                    style={style}
+                    >
                     <animate 
                       attributeName="points"
                       id={`animation-${key}${i}`}
