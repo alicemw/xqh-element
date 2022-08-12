@@ -208,7 +208,6 @@ import { fillingZero, getmm } from '@/utils/util';
             };
             if(full) {
               style['fill'] = color;
-              
             };
             if((linearGradient instanceof Array) && linearGradient.length > 0) {
               let fullKey = getmm();
@@ -249,7 +248,7 @@ import { fillingZero, getmm } from '@/utils/util';
           this.linePoiList = linePoiList;
       },
       updateView() {
-        let key = this.getmm;
+        const key = this.getmm;
         const [poitList, linePoiList] = this.getInitPoit();
         if(poitList.length !== this.poitList.length) {
           this.poitList = poitList;
@@ -267,8 +266,8 @@ import { fillingZero, getmm } from '@/utils/util';
       }
     },
     render() {
-      let key = this.getmm;
-      let styleobj = {
+      const key = this.getmm;
+      const styleobj = {
         height: typeStyleObj[this.type],
         width: typeStyleObj[this.type]
       };
