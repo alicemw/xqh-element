@@ -200,14 +200,15 @@ import { fillingZero, getmm } from '@/utils/util';
             });
             let style = {
               ['fill-opacity']: full ? opacity : 0,
-              stroke: color
+              stroke: color,
+              filter: "url(#feOffset)"
             };
             if(borderWidth) {
               style['stroke-width'] = borderWidth;
             };
             if(full) {
               style['fill'] = color;
-              style['filter'] = "url(#feOffset)";
+              
             };
             if((linearGradient instanceof Array) && linearGradient.length > 0) {
               let fullKey = getmm();
