@@ -102,7 +102,7 @@
           },
           {
             code: 'TechnicalVitality',
-            value: 35,
+            value: 100,
           },
           {
             code: 'TechnicalInfluence',
@@ -153,12 +153,12 @@
           },
           {
             code: 'TechnicalInfluence',
-            value: 78,
+            value: 82,
           },
         ],
-        zIndex: 1,
+        zIndex: 3,
         full: false,
-        color: '#ecaa42', 
+        color: '#FA8C16', 
         borderWidth: 3
       },
     ]
