@@ -183,7 +183,7 @@ import { fillingZero, getmm } from '@/utils/util';
         try {
           const legendObj = this.legendObj;
           series.forEach(item => {
-            const { full = false, color, data = [], borderWidth = 1, opacity = 1, linearGradient = [] } = item;
+            const { full = false, color, data = [], borderWidth = 1, opacity = 1, linearGradient = [], zIndex = 0 } = item;
             let points = '';
             data.forEach((element, i) => {
               const { code, value } = element;
@@ -221,7 +221,8 @@ import { fillingZero, getmm } from '@/utils/util';
             if(points && poitLen === step) {
               poitList.push({
                 points,
-                style
+                style,
+                zIndex
               })
             } else {
               let mapLine = points.split(' ').filter(Boolean).map(iop => {
@@ -236,7 +237,7 @@ import { fillingZero, getmm } from '@/utils/util';
             };
           });
           this.fillList = fillList;
-          return [poitList, linePoiList];
+          return [poitList.sort((a, b) => a.zIndex - b.zIndex), linePoiList];
         } catch(e) {
           console.log(e, 'catch')
           return [[], []];
