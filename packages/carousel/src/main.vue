@@ -290,6 +290,7 @@ export default {
   created() {
     this.throttledArrowClick = throttle(300, true, index => {
       this.setActiveItem(index);
+      this.pauseTimer()
     });
     this.throttledIndicatorHover = throttle(300, index => {
       this.handleIndicatorHover(index);
