@@ -63,7 +63,7 @@
   @include e(header_xqh) {
     font-family: $--family;
     font-weight: bold;
-    background-image: linear-gradient(to right, $--color-primary, #113B85);
+    background-image: linear-gradient(to right, #1051B5, #113B85) !important;
     padding: $--dialog-padding-primary-mini 30px;
     box-sizing: border-box;
     max-height: 48px;

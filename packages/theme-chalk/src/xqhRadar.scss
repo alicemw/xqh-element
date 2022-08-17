@@ -1,0 +1,30 @@
+$marginminiATop: -50px;
+$margininitATop: -80px;
+$marginbigTop: -90px;
+$marginOversizedTop: -150px;
+$marginATop: -111px;
+
+.canton {
+  overflow: hidden;
+}
+.canton-Oversized {
+  width: 700px !important;
+}
+.canton-big {
+  width: 600px !important;
+}
+.psvg {
+  & > footer {
+    padding: 30px 0 0 20px;
+    display: flex;
+    justify-content: center;
+    display: flex;
+    & > div:not(:first-child) {
+      margin-left: 45px;
+    }
+  }
+}
+// svg polygon:hover {
+//   stroke: #1051B5 !important;
+//   stroke-width: 1 !important;
+// }

@@ -311,6 +311,10 @@
             {
               "path": "/drawer",
               "title": "Drawer 抽屉"
+            },
+            {
+              "path": "/xqhRadar",
+              "title": "xqhRadar 雷达图"
             }
           ]
         }
