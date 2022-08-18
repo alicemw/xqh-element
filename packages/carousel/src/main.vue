@@ -55,6 +55,8 @@
 </template>
 
 <script>
+/* eslint-disable */
+
 import throttle from 'throttle-debounce/throttle';
 import { addResizeListener, removeResizeListener } from 'xqh-element/src/utils/resize-event';
 
