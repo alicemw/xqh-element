@@ -183,7 +183,7 @@ import { fillingZero, getmm } from '@/utils/util';
         try {
           const legendObj = this.legendObj;
           series.forEach(item => {
-            const { full = false, color, data = [], borderWidth = 1, opacity = 1, linearGradient = [] } = item;
+            const { full = false, color, data = [], borderWidth = 1, opacity = 1, linearGradient = [], zIndex = 0 } = item;
             let points = '';
             data.forEach((element, i) => {
               const { code, value } = element;
@@ -221,7 +221,8 @@ import { fillingZero, getmm } from '@/utils/util';
             if(points && poitLen === step) {
               poitList.push({
                 points,
-                style
+                style,
+                zIndex
               })
             } else {
               let mapLine = points.split(' ').filter(Boolean).map(iop => {
@@ -236,7 +237,7 @@ import { fillingZero, getmm } from '@/utils/util';
             };
           });
           this.fillList = fillList;
-          return [poitList, linePoiList];
+          return [poitList.sort((a, b) => a.zIndex - b.zIndex), linePoiList];
         } catch(e) {
           console.log(e, 'catch')
           return [[], []];
@@ -329,7 +330,7 @@ import { fillingZero, getmm } from '@/utils/util';
               }
               <defs>
                  <filter id="feOffset" x="0" y="0" width="200%" height="200%">
-                    <feOffset result="offOut" in="SourceAlpha" dx="4" dy="5" />
+                    <feOffset result="offOut" in="SourceAlpha" dx="2" dy="1" />
                     <feGaussianBlur result="blurOut" in="offOut" stdDeviation="5" />
                     <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
                   </filter>
@@ -379,28 +380,26 @@ import { fillingZero, getmm } from '@/utils/util';
                               return (
                                 <g>
                                  <text 
-                                  x={x + num * 1.2} 
+                                  x={x + num * 1.45} 
                                   y={y + 20} 
                                   font-family="Microsoft YaHei-Regular, Microsoft YaHei" 
                                   font-size="14px" 
                                   font-weight="200" 
                                   stroke={color}
                                   >
-                                  {!isNaN(value) ? fillingZero(value) : '--'}
-                                  </text>
-                                {
-                                  i !== childs.length - 1 && (
-                                    <text 
-                                      x={x + num + 30}
-                                      y={y + 20}
-                                      font-size="14px" 
-                                      font-weight="600" 
+                                  {!isNaN(value) ? " " + fillingZero(value) : ' --'}
+                                  {
+                                    i !== childs.length - 1 && (
+                                      <tspan
+                                      dx="5"
+                                      font-size="14px"
+                                      font-weight="600"
                                       stroke="#f8f5f9"
-                                      >
-                                      |
-                                    </text>
-                                  )
-                                }
+                                      font-size="14"
+                                      >|</tspan>
+                                    )
+                                  }
+                                  </text>
                                 </g>
                               )
                             })

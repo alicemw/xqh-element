@@ -68,7 +68,7 @@
         max: 100
       },
     ],
-    series: [// 用户图案展示层级，series索引值越大，层级越高
+    series: [
       {
         name: '企业得分', // 必传，用于对应用户文案展示
         data: [ // 用于图标数据展示，其中code会跟legend表头中的code对应， value为数据值，可传number || string
@@ -102,13 +102,14 @@
           },
           {
             code: 'TechnicalVitality',
-            value: 35,
+            value: 100,
           },
           {
             code: 'TechnicalInfluence',
             value: 64,
           },
         ],
+        zIndex: 2,  // 非必传, 用于图窗展示的优先级，可传数字 1 2 3 ... 9999
         borderWidth: 2, // 非必传, 用于图案边框宽度，可传数字，类似1 2 3 4 5
         full: true, // 非必传，用于控制当前图形是否填满颜色 可传true || false, 默认false
         linearGradient: ['#1051B5', '#0064FF'], // 非必传, 用于背景渐变色，目前只支持从左到右渐变，如不传，背景颜色按照color展示
@@ -152,11 +153,12 @@
           },
           {
             code: 'TechnicalInfluence',
-            value: 78,
+            value: 82,
           },
         ],
+        zIndex: 3,
         full: false,
-        color: '#ecaa42', 
+        color: '#FA8C16', 
         borderWidth: 3
       },
     ]
