@@ -54,11 +54,6 @@ import { fillingZero, getmm } from '@/utils/util';
           return {};
         }
       },
-      name: {
-        default() {
-          return 
-        }
-      }
     },
     computed: {
       legendObj() {
