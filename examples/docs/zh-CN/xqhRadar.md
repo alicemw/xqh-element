@@ -8,7 +8,7 @@
 ```html
 <template>
   <div>
-      <el-xqh-radar ref="xqhradar" :options="options" type="Oversized"></el-xqh-radar>
+      <el-xqh-radar ref="xqhradar" :options="options" type="mini"></el-xqh-radar>
       <el-button @click="update">点击更新数据</el-button>
   </div>
 </template>
@@ -18,7 +18,6 @@
       marginTop: '-20px'
     },
     footerSty: {// 非必传， 用于底部用户列表的样式
-      marginLeft: '20px'
     },
     legend: [// 必传， 用于表头项展示，传六个就展示六维度，九维度同理， 其中code会跟series中的code对应，name为表头项文案，max为最大值
       {
