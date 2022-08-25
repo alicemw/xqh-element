@@ -188,7 +188,7 @@
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |----------|-------------- |----------|--------------------------------  |-------- |
 | options   | 雷达数据         | object | — | 0 |
-| type      | 雷达图尺寸       | string | big, Oversized | Oversized |
+| type      | 雷达图尺寸       | string | mini,init, Oversized | Oversized |
 
 ### Events
 | 事件名称 | 说明 | 回调参数 |
