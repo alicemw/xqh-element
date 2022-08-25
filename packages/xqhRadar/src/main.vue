@@ -1,7 +1,6 @@
 <script type="text/babel">
 /* eslint-disable */
 import { fillingZero, getmm } from "@/utils/util";
-import { transliterate } from "transliteration";
 const bgArr = ["#e5ebf8", "#d0d6ed", "#bdc6e8", "#aab6e1", "#9aaadb"];
 const lineBg = "#8699cc";
 const typeStyleObj = {
