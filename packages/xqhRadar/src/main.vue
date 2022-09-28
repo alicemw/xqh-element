@@ -420,7 +420,7 @@ export default {
                               x={x + num * textProportion}
                               y={y + 20}
                               font-family="Microsoft YaHei-Regular, Microsoft YaHei"
-                              style={textStyle}
+                              style={{...textStyle,transform:`translateX(${i == 1 && childs[0] && childs[0].value > 99.9?15:10}px)`}}
                               font-weight="200"
                               stroke={color}
                             >
