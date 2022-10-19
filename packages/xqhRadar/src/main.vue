@@ -1,8 +1,8 @@
 <script type="text/babel">
 /* eslint-disable */
 import { fillingZero, getmm } from "@/utils/util";
-const bgArr = ["#e5ebf8", "#d0d6ed", "#bdc6e8", "#aab6e1", "#9aaadb"];
-const lineBg = "#8699cc";
+const bgArr = "rgba(16, 81, 181,0.1)";
+const lineBg = "rgba(16, 81, 181,0.2)";
 const typeStyleObj = {
   mini: 350,
   init: 600,
@@ -332,7 +332,7 @@ export default {
           <svg height={styleobj.height} width={styleobj.width}>
             {this.mapList.map((item, index) => {
               let style = {
-                fill: bgArr[index],
+                fill: bgArr,
               };
               if (index === 0) style.stroke = lineBg;
               return <polygon points={item} style={style} />;
