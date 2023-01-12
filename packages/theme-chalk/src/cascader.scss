@@ -98,7 +98,8 @@
       max-width: 100%;
       margin: 2px 0 2px 6px;
       text-overflow: ellipsis;
-      background: $--cascader-tag-background;
+      // background: $--cascader-tag-background;
+      color:#2b2b2b;
 
       &:not(.is-hit) {
         border-color: transparent;
@@ -112,11 +113,15 @@
 
       .el-icon-close {
         flex: none;
-        background-color: $--color-text-placeholder;
-        color: $--color-white;
+        // background-color: $--color-text-placeholder;
+        // color: $--color-white;
+        color:$--color-info;
+        top:1px;
 
         &:hover {
-          background-color: $--color-text-secondary;
+          // background-color: $--color-text-secondary;
+          background-color: transparent;
+          color:$--color-textStar;
         }
       }
     }
