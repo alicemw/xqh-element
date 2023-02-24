@@ -14,7 +14,7 @@
   background-color: $--color-white;
   font-size: 14px;
   // color: $--table-font-color;
-  color: #8C8C8C;
+  color: $--switch-off-color;
 
   // 数据为空
   @include e(empty-block) {
